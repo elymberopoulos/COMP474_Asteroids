@@ -1,6 +1,6 @@
 import pygame
 import pygame.event
-from pygame.locals import *
+from src.ship import Ship
 import sys
 
 def gameExit():
@@ -8,7 +8,6 @@ def gameExit():
     sys.exit()
 
 def main():
-
     #Setup basic variables and methods for pygame
     pygame.init()
     windowWidth = 800
