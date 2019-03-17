@@ -1,14 +1,54 @@
-Class: COMP 474 - 001 - Software Engineering
+# Class: COMP 474 - 001 - Software Engineering
 
-Instructor: Christopher Stone
+#### Instructor: Christopher Stone
+
+##### Project Team:
+* Eric Lymberopoulos [Programmer]
+* Jarod Navarro [Programmer]
+* Jay Kinzie [Programmer]
+
+##### Document Authors:
+* Eric Lymberopoulos
+* Jarod Navarro
+* Jay Kinzie
+
+#### Document Revision History
+1. Date: 3/17/19, Jay Kinzie - Added User Stories to the document.
+2. Date: 3/17/19, Eric Lymberopoulos - Added Functional Requirements, Non Functional Requirements, Constraints, Glossary.
 
 Overview:
 The goal of this project is to create a classic asteroids clone. A link to a suitable example can be found here: 
-
 http://www.arcadedivision.com/classicgame5/shooting/asteroids.html
 
-Language: The game will be created in python using the pygame engine.
+## Functional Requirements
+1. Initial Screen - The welcome menu shall have an option to start the game.
+2. Pause Game - If the player presses the pause button "p" then the game shall freeze and be able to be restarted.
+3. Map Wrap Around - If the player's ship goes beyond the edge of the map then the ship shall
+					  appear at the other side of the map.
+4. Ship Rotation - The ship shall be able to rotate in the 2D plane.
+5. Ship Thruster - The ship shall be able to propel itself in the direction it is facing.
+6. Thruster Details - The ship's thruster shall have a flame and play audio when the user is moving the ship.
+7. Inertia - The ship shall continue to move after the user stops pressing the thruster button.
+8. Ship Combat - The user shall be able to fire the cannon on the ship. The projectiles will have
+				 a limited range and only five can be on the screen at any given time.
+9. Asteroids - Upon being hit by the ship's cannon the asteroid shall break into smaller pieces.
+			   If the asteroid is in its smallest size then it shall be destroyed and the player score incremented.
+10. Ship Collision - If the player's ship collides with an asteroid then it shall be destroyed.
+11. Alien Ship - At random points an alien ship shall enter the map.
+12. Alien Ship Sound - The alien ship shall have a distinct sound when it is spawned.
+13. Alien Ship Combat - The alien ship shall shoot projectiles at the player. If the player's ship is hit
+						It shall kill the player and a life will be deducted from the player. If the player
+						collides with the alien ship the player shall die and a life will be deducted.
 
+## Nonfunctional Requirements
+
+## Constraints
+* The project shall be implemented using Pygame and the Python programming language.
+
+### Project Glossary
+* Pygame - Pygame is a cross-platform set of Python modules designed for writing video games.
+		   It includes computer graphics and sound libraries designed to be used with the Python programming language.
+ 		   
 User Stories:
 
 ###----------Beginning Conditions----------###
