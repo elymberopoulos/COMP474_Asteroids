@@ -45,7 +45,7 @@ http://www.arcadedivision.com/classicgame5/shooting/asteroids.html
 
 ## Nonfunctional Requirements
 1. The game shall have industry level reliability. If the program does encounter errors it shall gracefully handle
-   The errors in an appropriate mannder.
+   The errors in an appropriate manner.
 
 ## Constraints
 * The project shall be implemented using Pygame and the Python programming language.
