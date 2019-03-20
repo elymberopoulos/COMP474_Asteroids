@@ -6,15 +6,18 @@
 * Eric Lymberopoulos [Programmer]
 * Jarod Navarro [Programmer]
 * Jay Kinzie [Programmer]
+* Wei Zhang [Programmer]
 
 ##### Document Authors:
 * Eric Lymberopoulos
 * Jarod Navarro
 * Jay Kinzie
+* Wei Zhang
 
 #### Document Revision History
 1. Date: 3/17/19, Jay Kinzie - Added User Stories to the document.
 2. Date: 3/17/19, Eric Lymberopoulos - Added Functional Requirements, Non Functional Requirements, Constraints, Glossary.
+3. Date: 3/19/19, Eric Lymberopoulos - Added a non-functional requirement. Also added Wei Zhang to the document and project.
 
 Overview:
 The goal of this project is to create a classic asteroids clone. A link to a suitable example can be found here: 
@@ -41,6 +44,8 @@ http://www.arcadedivision.com/classicgame5/shooting/asteroids.html
 						collides with the alien ship the player shall die and a life will be deducted.
 
 ## Nonfunctional Requirements
+1. The game shall have industry level reliability. If the program does encounter errors it shall gracefully handle
+   The errors in an appropriate manner.
 
 ## Constraints
 * The project shall be implemented using Pygame and the Python programming language.
