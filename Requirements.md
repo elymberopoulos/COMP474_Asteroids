@@ -19,6 +19,7 @@
 2. Date: 3/17/19, Eric Lymberopoulos - Added Functional Requirements, Non Functional Requirements, Constraints, Glossary.
 3. Date: 3/19/19, Eric Lymberopoulos - Added a non-functional requirement. Also added Wei Zhang to the document and project.
 4. Date: 3/20/19, Wei Zhang - Added non-functional requirements, Development and Target platforms and Constraints. 
+5. Date: 3/20/19, Jarod Navarro - Added End Conditions requirement.
 
 Overview:
 The goal of this project is to create a classic asteroids clone. A link to a suitable example can be found here: 
@@ -102,4 +103,6 @@ User Stories:
 24. A level is completed once all asteroids and alien ships are destroyed. 
 25. Once a level is completed, the field will reset with more asteroids than the previous stage, and the score will increase.
 26. If the player runs out of lives, the score will be displayed prominently and the game will reset. 
+27. If this is not the player's first time playing, the high score history will be displayed. Can be saved in a text file.
+28. If the player beats the high score, allow the player to type in their 3 initials, as they would in a normal arcade.
 
