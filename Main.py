@@ -5,24 +5,52 @@ import sys
 import random
 
 class Asteroid(pygame.sprite.Sprite):
-    def __init__(self, windowWidth):
+    def __init__(self, windowWidth, windowHeight):
         self.windowWidth = windowWidth
+        self.windowHeight = windowHeight
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.Surface((20,20))
-        self.image.fill((0,0,0))
+        self.image.fill((150,150,150))
         self.rect = self.image.get_rect()
         #Set start location and speeds
         self.rect.x = random.randrange(windowWidth - self.rect.width)
         self.rect.y = random.randrange(-100, -50)
-        self.speed_y = random.randrange(1,10)
+        self.speed_y = random.randrange(1,4)
+        self.speed_x = random.randrange(-2,2)
 
     def update(self):
         self.rect.y += self.speed_y
+        self.rect.x += self.speed_x
 
-        if self.rect.top > self.windowHeight + 15:
+        if self.rect.top > self.windowHeight + 15 or self.rect.left < -15 or self.rect.right > self.windowWidth:
             self.rect.x = random.randrange(self.windowWidth - self.rect.width)
             self.rect.y = random.randrange(-100, -50)
-            self.speed_y = random.randrange(1,10)
+            self.speed_y = random.randrange(1,4)
+            self.speed_x = random.randrange(-2,2)
+
+class Asteroid2(pygame.sprite.Sprite):
+    def __init__(self, windowWidth, windowHeight):
+        self.windowWidth = windowWidth
+        self.windowHeight = windowHeight
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((20,20))
+        self.image.fill((150,150,150))
+        self.rect = self.image.get_rect()
+        #Set start location and speeds
+        self.rect.x = -20
+        self.rect.y = random.randrange(0, windowHeight-100)
+        self.speed_y = random.randrange(-2,2)
+        self.speed_x = random.randrange(1,3)
+
+    def update(self):
+        self.rect.y += self.speed_y
+        self.rect.x += self.speed_x
+
+        if self.rect.top > self.windowHeight + 15 or self.rect.left < -15 or self.rect.right > self.windowWidth:
+            self.rect.x = random.randrange(-20, -10)
+            self.rect.y = random.randrange(0, self.windowHeight-100)
+            self.speed_y = random.randrange(1,4)
+            self.speed_x = random.randrange(1,3)
 
 def gameExit():
     pygame.quit()
@@ -38,13 +66,6 @@ def main():
     gameWindow = pygame.display.set_mode((windowWidth, windowHeight))
     pygame.display.set_caption("Asteroids")
     surface = pygame.Surface((50,50))
-
-    #Key press variables
-    leftDown = False
-    rightDown = False
-    moveUp = False
-    moveDown = False
-
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
 
@@ -54,19 +75,26 @@ def main():
     shipSpeed = 4
 
     #Variables to keep track of sprites on the screen
-    gameSprites = pygame.sprite.Group()
+    game_sprites = pygame.sprite.Group()
     asteroidsOnScreen = pygame.sprite.Group()
     for i in range(10):
-        asteroid = Asteroid(windowWidth)
-        gameSprites.add(asteroid)
-        asteroidsOnScreen.add(asteroid)
+        if i % 2 == 0:
+            asteroid = Asteroid(windowWidth, windowHeight)
+            game_sprites.add(asteroid)
+            asteroidsOnScreen.add(asteroid)
+        else:
+            asteroid = Asteroid2(windowWidth, windowHeight)
+            game_sprites.add(asteroid)
+            asteroidsOnScreen.add(asteroid)
+
         
 
     while(True):
         
         #Possible bounding box for initial ship
         pygame.draw.ellipse(gameWindow, WHITE, (shipX, shipY, 20, 30))
-
+        game_sprites.draw(gameWindow)
+        game_sprites.update()
         #Draw Triangle
         # pygame.draw.lines(gameWindow, WHITE, True, ((400, 350), (450, 400), (350, 400), 1))
         pygame.display.update()
