@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.28307.421
+VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "comp474_asteroids", "comp474_asteroids.pyproj", "{C641E85A-FE8A-40C8-BFFA-70BB28869CD5}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "comp474_asteroids1", "comp474_asteroids1.pyproj", "{A1A8E483-EFDC-4ADE-9154-75B8977831A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,13 +11,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C641E85A-FE8A-40C8-BFFA-70BB28869CD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C641E85A-FE8A-40C8-BFFA-70BB28869CD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A8E483-EFDC-4ADE-9154-75B8977831A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A8E483-EFDC-4ADE-9154-75B8977831A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {71BE553B-7AF1-4352-93BF-82A086DD8BC2}
+		SolutionGuid = {6D8CA11D-309C-4ACB-B033-5F076DA1E77B}
 	EndGlobalSection
 EndGlobal
