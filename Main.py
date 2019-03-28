@@ -1,4 +1,5 @@
 import sys
+from Asteroid import *
 from Player import Player
 from Constants import *
 
@@ -15,11 +16,30 @@ player = Player()
 # add the player to the game sprites
 GAME_SPRITES.add(player)
 
-
 # function to exit the game
 def game_exit():
     pygame.quit()
     sys.exit()
+
+
+#Variables to keep track of sprites on the screen
+game_sprites = pygame.sprite.Group()
+asteroidsOnScreen = pygame.sprite.Group()
+for i in range(10):
+    asteroid = Asteroid()
+
+
+
+    '''
+    elif i <= 6:
+        asteroid = Asteroid2.Asteroid2(windowWidth, windowHeight)
+        game_sprites.add(asteroid)
+        asteroidsOnScreen.add(asteroid)
+    else:
+        asteroid = Asteroid3.Asteroid3(windowWidth, windowHeight)
+        game_sprites.add(asteroid)
+        asteroidsOnScreen.add(asteroid)
+    '''
 
 
 # main game loop

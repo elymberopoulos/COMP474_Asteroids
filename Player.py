@@ -34,11 +34,11 @@ class Player(pygame.sprite.Sprite):
         # position
         self.pos = vec(WIN_WIDTH / 2, WIN_HEIGHT / 2)
         # velocity
-        self.vel = vec(0,0)
+        self.vel = vec(0, 0)
         # acceleration
-        self.acc = vec(0,0)
+        self.acc = vec(0, 0)
         # direction
-        self.dir = vec(1,0)
+        self.dir = vec(1, 0)
         # angle of the player
         self.angle = 0
 
@@ -107,6 +107,7 @@ class Player(pygame.sprite.Sprite):
         if self.pos.y < 0:
             self.pos.y = WIN_HEIGHT
 
+        # update the position
         self.rect.center = self.pos
 
 

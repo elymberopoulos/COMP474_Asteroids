@@ -33,3 +33,4 @@ PLAYER_ANGLE_VEL = 3
 # standard lists
 GAME_SPRITES = pygame.sprite.Group()
 PROJECTILES = pygame.sprite.Group()
+ASTEROIDS = pygame.sprite.Group()
