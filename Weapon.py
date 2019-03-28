@@ -31,7 +31,7 @@ class Weapon(pygame.sprite.Sprite):
         GAME_SPRITES.add(self)
 
         # sprite image of the projectile
-        self.image = pygame.Surface((self.WEAPON_SPRITE_SIZE_X, self.WEAPON_SPRITE_SIZE_Y)) # pygame.image.load(os.path.join(IMG_DIR, "Bullet.png")).convert()
+        self.image = pygame.Surface((self.WEAPON_SPRITE_SIZE_X, self.WEAPON_SPRITE_SIZE_Y))
         self.image.fill(self.WEAPON_PROJECTILE_COLOR)
 
         self.rect = self.image.get_rect()
@@ -79,5 +79,6 @@ class Weapon(pygame.sprite.Sprite):
         self.vel += self.acc
         self.pos += self.vel + 0.5 * self.acc
 
+        # update the position
         self.rect.center = self.pos
 

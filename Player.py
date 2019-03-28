@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
         self.angle = 0
 
     def fire_weapon(self, in_weapon):
-        # check if the number of projectiles on the screen is less than 5
+        # check if the number of projectiles on the screen is less than the number of max projectiles
         if in_weapon.WEAPON_PROJECTILES < in_weapon.WEAPON_MAX_PROJECTILES:
             # check if the weapon has cooled down
             if pygame.sprite.get_ticks() - in_weapon.WEAPON_COOL_BEGIN > in_weapon.WEAPON_COOLDOWN_TIME:
