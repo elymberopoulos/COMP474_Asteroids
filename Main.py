@@ -13,8 +13,6 @@ pygame.display.set_caption(TITLE)
 clock = pygame.time.Clock()
 # create the player
 player = Player()
-# add the player to the game sprites
-GAME_SPRITES.add(player)
 
 # function to exit the game
 def game_exit():
@@ -23,13 +21,9 @@ def game_exit():
 
 
 #Variables to keep track of sprites on the screen
-game_sprites = pygame.sprite.Group()
-asteroidsOnScreen = pygame.sprite.Group()
+
 for i in range(10):
     asteroid = Asteroid()
-
-
-
     '''
     elif i <= 6:
         asteroid = Asteroid2.Asteroid2(windowWidth, windowHeight)

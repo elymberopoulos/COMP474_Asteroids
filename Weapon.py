@@ -7,16 +7,27 @@ vec = pygame.math.Vector2
 
 class Weapon(pygame.sprite.Sprite):
 
+    # name of the weapon
     WEAPON_NAME = "NONE"
+    # speed of the projectile
     WEAPON_PROJECTILE_SPEED = 10
+    # cooldown time to control the firing rate
     WEAPON_COOLDOWN_TIME = 100
+    # sets the life time in ms
     WEAPON_LIFE_TIME = 1000
+    # sets the projectile color
     WEAPON_PROJECTILE_COLOR = WHITE
+    # sets the maximum number of projectiles allowed on screen
     WEAPON_MAX_PROJECTILES = 10
+    # sets the angular spread of the weapon
     WEAPON_ANGULAR_SPREAD = 5
+    # sets the size of the sprite in x
     WEAPON_SPRITE_SIZE_X = 5
+    # sets the size of the sprite in y
     WEAPON_SPRITE_SIZE_Y = 5
+    # accumulator to keep of the total number of current projectiles on screen
     WEAPON_PROJECTILES = 0
+    # flag to act as a marker after firing to control cooldown
     WEAPON_COOL_BEGIN = 0
 
     # Weapons take a copy of the initial position, velocity, and direction to keep up with the ship

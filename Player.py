@@ -42,6 +42,9 @@ class Player(pygame.sprite.Sprite):
         # angle of the player
         self.angle = 0
 
+        # add the player to the current game sprites
+        GAME_SPRITES.add(self)
+
     def fire_weapon(self, in_weapon):
         # check if the number of projectiles on the screen is less than the number of max projectiles
         if in_weapon.WEAPON_PROJECTILES < in_weapon.WEAPON_MAX_PROJECTILES:
@@ -74,22 +77,26 @@ class Player(pygame.sprite.Sprite):
         if keys[pygame.K_LEFT]:
             self.angle += PLAYER_ANGLE_VEL
 
+        # check the right key press
         if keys[pygame.K_RIGHT]:
             self.angle -= PLAYER_ANGLE_VEL
 
+        # check the up key press to see if we need to swap the ship's sprite out for the one with the engine
+        if keys[pygame.K_UP]:
+            self.image = self.ship_with_engine
+            self.reference_image = self.ship_with_engine_ref
+
+        # rotate the ship's direction and sprite which needs to be resolved before we calculate the linear motion
+        self.rotate(self.angle)
+
+        # check the up key press again to resolve the acceleration after rotation
         if keys[pygame.K_UP]:
             self.acc.x += PLAYER_ACC * self.dir.x
             self.acc.y += -PLAYER_ACC * self.dir.y
 
-            # if the user moves forward, then we change the sprite to the version with the engine
-            self.image = self.ship_with_engine
-            self.reference_image = self.ship_with_engine_ref
-
+        # check the space bar
         if keys[pygame.K_SPACE]:
             self.fire_weapon(WeaponGun)
-
-        self.rotate(self.angle)
-
         # apply friction
         self.acc += self.vel * PLAYER_FRICTION
 
