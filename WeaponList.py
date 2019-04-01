@@ -1,6 +1,5 @@
 from Weapon import *
 
-
 class WeaponGun(Weapon):
     WEAPON_NAME = "GUN"
     WEAPON_PROJECTILE_SPEED = 10
@@ -11,3 +10,4 @@ class WeaponGun(Weapon):
     WEAPON_ANGULAR_SPREAD = 0
     WEAPON_SPRITE_SIZE_X = 2
     WEAPON_SPRITE_SIZE_Y = 2
+

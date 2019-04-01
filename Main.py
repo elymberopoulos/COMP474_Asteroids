@@ -2,6 +2,10 @@ import sys
 from src.asteroid import Asteroid, Asteroid2, Asteroid3
 from src.player import Player
 from Constants import *
+from Weapon import *
+from src.collision import Collider
+from src.gameManager import Manager
+import random
 
 # start the pygame engine
 pygame.init()
@@ -14,23 +18,12 @@ clock = pygame.time.Clock()
 # create the player
 player = Player.Player()
 
-# function to exit the game
-def game_exit():
-    pygame.quit()
-    sys.exit()
-
 #Variables to keep track of sprites on the screen
 
-for i in range(10):
-    if i <= 2:
-        Asteroid.Asteroid()
-    elif i <= 6:
-        Asteroid2.Asteroid2()
-    else:
-        Asteroid3.Asteroid3()
 
-
-
+# Game management functions have been abstracted out to their own class for organization
+gameManager = Manager.Manager()
+gameManager.AstroidInit()
 
 # main game loop
 while True:
@@ -46,11 +39,15 @@ while True:
             # check for the escape key press
             if event.key == pygame.K_ESCAPE:
                 # exit the game
-                game_exit()
+                gameManager.game_exit()
 
     # update the sprites
     GAME_SPRITES.update()
     # draw the game sprites in the window
     GAME_SPRITES.draw(window)
+
+    # imported module for collision detection and asteroid respawn
+    Collider.Collider(player)
+
     pygame.display.flip()
 

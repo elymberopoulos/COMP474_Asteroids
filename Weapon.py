@@ -41,6 +41,9 @@ class Weapon(pygame.sprite.Sprite):
         # adds itself to the game sprites
         GAME_SPRITES.add(self)
 
+        # add to projectile group for collision detection
+        PROJECTILES.add(self)
+
         # sprite image of the projectile
         self.image = pygame.Surface((self.WEAPON_SPRITE_SIZE_X, self.WEAPON_SPRITE_SIZE_Y))
         self.image.fill(self.WEAPON_PROJECTILE_COLOR)
