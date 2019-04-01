@@ -8,7 +8,10 @@ This class of asteroids spawn at the top of the screen and move to the bottom si
 class Asteroid(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((20, 20))
+        if self.randomSize():
+            self.image = pygame.Surface((20,20))
+        else:
+            self.image = pygame.Surface((35,35))
         self.image.fill((150, 150, 150))
         self.rect = self.image.get_rect()
 
@@ -30,3 +33,7 @@ class Asteroid(pygame.sprite.Sprite):
             self.rect.y = random.randrange(-100, -50)
             self.speed_y = random.randrange(1, 4)
             self.speed_x = random.randrange(-2, 2)
+
+    def randomSize(self):
+        percent = 50
+        return random.randrange(100) < percent
