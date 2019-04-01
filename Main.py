@@ -1,6 +1,6 @@
 import sys
 from src.asteroid import Asteroid, Asteroid2, Asteroid3
-from Player import Player
+from src.player import Player
 from Constants import *
 
 # start the pygame engine
@@ -12,7 +12,7 @@ pygame.display.set_caption(TITLE)
 # start the game clock
 clock = pygame.time.Clock()
 # create the player
-player = Player()
+player = Player.Player()
 
 # function to exit the game
 def game_exit():
