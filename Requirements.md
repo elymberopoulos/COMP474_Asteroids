@@ -20,6 +20,7 @@
 3. Date: 3/19/19, Eric Lymberopoulos - Added a non-functional requirement. Also added Wei Zhang to the document and project.
 4. Date: 3/20/19, Wei Zhang - Added non-functional requirements, Development and Target platforms and Constraints. 
 5. Date: 3/20/19, Jarod Navarro - Added End Conditions requirement.
+6. Date: 4/2/19, Eric Lymberopoulos - Altering non-functional requirements for less abstract wording.
 
 Overview:
 The goal of this project is to create a classic asteroids clone. A link to a suitable example can be found here: 
@@ -46,11 +47,9 @@ http://www.arcadedivision.com/classicgame5/shooting/asteroids.html
 						collides with the alien ship the player shall die and a life will be deducted.
 
 ## Nonfunctional Requirements
-1. The game shall have industry level reliability. If the program does encounter errors it shall gracefully handle
-   The errors in an appropriate manner.
-2. The game shall have robust securability to protect users information.
+1. The game shall have the ability to recover from errors so the program does not crash.
 3. The game shall be testable.
-4. The game shall be designed in logical and professional manner. 
+4. The game shall have clean and legible code with comments for easy maintainability.
 
 ## Constraints
 * No more than one player shall be able to play this game at one time. 
