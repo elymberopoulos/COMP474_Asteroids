@@ -1,5 +1,6 @@
 import pygame, random
 import Constants
+import os
 
 """
 This class of asteroids spawn at the left side of the screen and move to the right side of the window.
@@ -8,11 +9,12 @@ This class of asteroids spawn at the left side of the screen and move to the rig
 class Asteroid2(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        if self.randomSize():
-            self.image = pygame.Surface((20,20))
-        else:
-            self.image = pygame.Surface((35,35))
-        self.image.fill((150,150,150))
+        self.asteroidImage = pygame.image.load(os.path.join(Constants.IMG_DIR, "Asteroid_1.PNG")).convert()
+        self.image = self.asteroidImage
+
+        self.image = pygame.Surface((40, 40))
+
+        self.image.fill((150, 150, 150))
         self.rect = self.image.get_rect()
         #Set start location and speeds
         self.rect.x = -20
@@ -24,6 +26,7 @@ class Asteroid2(pygame.sprite.Sprite):
         Constants.ASTEROIDS.add(self)
 
     def update(self):
+        self.image = self.asteroidImage
         self.rect.y += self.speed_y
         self.rect.x += self.speed_x
 
@@ -32,7 +35,3 @@ class Asteroid2(pygame.sprite.Sprite):
             self.rect.y = random.randrange(0, Constants.WIN_HEIGHT-100)
             self.speed_y = random.randrange(1,4)
             self.speed_x = random.randrange(1,3)
-
-    def randomSize(self):
-        percent = 50
-        return random.randrange(100) < percent

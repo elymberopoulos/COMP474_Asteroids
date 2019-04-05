@@ -23,6 +23,7 @@ player = Player.Player()
 
 # Game management functions have been abstracted out to their own class for organization
 gameManager = Manager.Manager()
+gameManager.startMusic()
 gameManager.AstroidInit()
 
 # main game loop

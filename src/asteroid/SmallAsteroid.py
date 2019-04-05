@@ -4,17 +4,23 @@ import Constants
 import os
 
 """
-This class of asteroids spawn at the top of the screen and move to the bottom side of the window.
+
+******************************************************************************** |
+THE CODE FOR THIS CLASS NEEDS TO BE ALTERED TO SPAWN ON A DESTROYED BIG ASTEROID |
+******************************************************************************** |
+
 """
 
 
-class Asteroid(pygame.sprite.Sprite):
+class SmallAsteroid(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
 
         self.asteroidImage = pygame.image.load(os.path.join(Constants.IMG_DIR, "Asteroid_1.PNG")).convert()
         self.image = self.asteroidImage
+
         self.image = pygame.Surface((40, 40))
+
         self.image.fill((150, 150, 150))
         self.rect = self.image.get_rect()
 

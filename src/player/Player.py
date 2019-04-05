@@ -6,7 +6,10 @@ vec = pygame.math.Vector2
 
 
 class Player(pygame.sprite.Sprite):
+
     def __init__(self):
+        # Import the weapon sound effect
+        self.weapon_sound = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'fire.wav'))
 
         pygame.sprite.Sprite.__init__(self)
 
@@ -56,6 +59,8 @@ class Player(pygame.sprite.Sprite):
                 current_weapon = in_weapon(copy.deepcopy(self.pos), copy.deepcopy(self.vel), vec(0, -1).rotate(-self.angle))
                 in_weapon.WEAPON_COOL_BEGIN = pygame.sprite.get_ticks()
                 # print(in_weapon.WEAPON_NAME + " : " + in_weapon.WEAPON_PROJECTILES.__str__())
+
+                self.weapon_sound.play()
 
     def rotate(self, angle):
         self.image = pygame.transform.rotate(self.reference_image, angle)

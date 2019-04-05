@@ -1,4 +1,7 @@
 from Weapon import *
+from Constants import *
+import os
+import pygame
 
 class WeaponGun(Weapon):
     WEAPON_NAME = "GUN"
@@ -10,4 +13,6 @@ class WeaponGun(Weapon):
     WEAPON_ANGULAR_SPREAD = 0
     WEAPON_SPRITE_SIZE_X = 2
     WEAPON_SPRITE_SIZE_Y = 2
+
+
 
