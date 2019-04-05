@@ -4,11 +4,18 @@ from src.player import Player
 from Constants import *
 from Weapon import *
 import random
+import os
 
 class Collider:
     def __init__(self, player):
+
         bulletCollide = pygame.sprite.groupcollide(ASTEROIDS, PROJECTILES, True, False)
+        explosion_effect = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'explosion.wav'))
+        self.PLAYER_LIVES = 3
+
         for collision in bulletCollide:
+            explosion_effect.play()
+
             # Randomly spawn new asteroid from different sides of the screen
             newAstroid = random.randrange(0, 3)
             if newAstroid == 0:
@@ -31,6 +38,6 @@ class Collider:
         if collisions:
             self.game_exit()
 
-    def game_exit(slef):
+    def game_exit(self):
         pygame.quit()
-        sys.exit()
+        sys.exit(0)

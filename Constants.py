@@ -24,6 +24,9 @@ GAME_DIR = os.path.dirname(__file__)
 ASSETS_DIR = os.path.join(GAME_DIR, "assets")
 # relative path to image dir
 IMG_DIR = os.path.join(ASSETS_DIR, "images")
+# relative path to audio dir
+AUDIO_DIR = os.path.join(ASSETS_DIR, "audio")
+
 
 # player constants
 PLAYER_ACC = .5
