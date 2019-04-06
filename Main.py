@@ -6,7 +6,7 @@ from Weapon import *
 from src.collision import Collider
 from src.gameManager import Manager
 import random
-
+import Score
 # start the pygame engine
 pygame.init()
 # create the pygame window with the specified dimentions
@@ -49,6 +49,5 @@ while True:
 
     # imported module for collision detection and asteroid respawn
     Collider.Collider(player)
-
     pygame.display.flip()
 
