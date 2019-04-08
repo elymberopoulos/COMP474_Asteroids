@@ -3,7 +3,7 @@ from src.asteroid import Asteroid2
 from Constants import *
 import pygame
 
-class TestAsteroid(TestCase):
+class TestAsteroid2(TestCase):
 
     def test_size(self):
         pygame.init()
