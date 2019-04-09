@@ -1,10 +1,10 @@
-from unittest import TestCase
+import unittest
 from src.player import Player
 from Constants import *
 from WeaponList import *
 import pygame
 
-class TestPlayer(TestCase):
+class TestPlayer(unittest.TestCase):
 
     def test_StartPosition(self):
         pygame.init()
