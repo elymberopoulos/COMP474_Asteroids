@@ -1,0 +1,38 @@
+# This is a Travis CI .yml file for continuous integration.
+# Travis allows for software to be built in virtual environments.
+# This helps ensure environment and software testing and compatability
+
+language: python
+python:
+  - "2"
+  - "3"
+  - "3.5"
+  - "3.7"
+
+# Build when pushed to any branch
+branches:
+  only:
+  - gh-pages
+  - /.*/
+
+# command to install dependencies
+install:
+  - pip install pygame
+
+matrix:
+  include:
+  - python: 3.5
+    script: py TestSuite.py
+
+  - python: 3.7
+    script: py TestSuite.py
+
+  allow_failures:
+    - python: 2
+    - python: 3.1
+    - python: 3.2
+    - python: 3.3
+    - python: 3.4
+
+  fast_finish: true
+
