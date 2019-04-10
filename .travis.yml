@@ -3,11 +3,6 @@
 # This helps ensure environment and software testing and compatability
 
 language: python
-python:
-  - "2"
-  - "3"
-  - "3.5"
-  - "3.7"
 
 # Build when pushed to any branch
 branches:
@@ -21,10 +16,25 @@ install:
 
 matrix:
   include:
+  - python: 2.7
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
+  - python: 3.4
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
   - python: 3.5
     dist: xenial
     sudo: true
-    script: py TestSuite.py
+    script: python TestSuite.py
+
+  - python: 3.6
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
 
   - python: 3.7
     dist: xenial
@@ -32,9 +42,6 @@ matrix:
     script: python TestSuite.py
 
   allow_failures:
-    - python: 2
-    - python: 3.1
-    - python: 3.2
     - python: 3.3
     - python: 3.4
 
