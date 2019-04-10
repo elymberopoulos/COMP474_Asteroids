@@ -29,7 +29,7 @@ matrix:
   - python: 3.7
     dist: xenial
     sudo: true
-    script: py TestSuite.py
+    script: python TestSuite.py
 
   allow_failures:
     - python: 2
