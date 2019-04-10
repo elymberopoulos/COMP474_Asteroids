@@ -22,9 +22,13 @@ install:
 matrix:
   include:
   - python: 3.5
+    dist: xenial
+    sudo: true
     script: py TestSuite.py
 
   - python: 3.7
+    dist: xenial
+    sudo: true
     script: py TestSuite.py
 
   allow_failures:
