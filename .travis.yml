@@ -16,7 +16,7 @@ install:
 
 matrix:
   include:
-  - python: 2.7
+  - python: 3.3
     dist: xenial
     sudo: true
     script: python TestSuite.py
