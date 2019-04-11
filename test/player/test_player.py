@@ -25,7 +25,7 @@ class TestPlayer(unittest.TestCase):
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         player = Player.Player()
         player.fire_weapon(Weapon)
-        self.assertEqual(1, len(PROJECTILES))
+        self.assertEqual(1, len(PROJECTILES.sprites()))
         GAME_SPRITES.update()
         GAME_SPRITES.empty()
         PROJECTILES.empty()
@@ -37,13 +37,15 @@ class TestPlayer(unittest.TestCase):
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         player = Player.Player()
-        bullets = PROJECTILES
-        GSPRITES = GAME_SPRITES
+        GSPRITES = GAME_SPRITES.sprites()
         for i in range(5):
             time.sleep(.05)
-            player.fire_weapon(WeaponGun)
+            player.fire_weapon(Weapon)
+            GAME_SPRITES.update()
+            PROJECTILES.update()
+        bullets = PROJECTILES.sprites()
 
-        self.assertEqual(3, len(PROJECTILES))
+        self.assertEqual(3, len(bullets))
 
         GAME_SPRITES.empty()
         PROJECTILES.empty()

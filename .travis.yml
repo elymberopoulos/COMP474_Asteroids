@@ -4,6 +4,8 @@
 
 language: python
 
+os: windows
+
 # Build when pushed to any branch
 branches:
   only:
