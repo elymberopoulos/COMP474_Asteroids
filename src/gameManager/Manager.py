@@ -4,6 +4,7 @@ from src.asteroid.Asteroid2 import Asteroid2
 from src.asteroid.Asteroid3 import Asteroid3
 from Weapon import *
 import pygame
+from src.alien.Alien import Alien
 
 class Manager:
     def __init__(self):
@@ -26,6 +27,9 @@ class Manager:
             else:
                 Asteroid3()
                 # Asteroid3.Asteroid3()
+
+    def Alien(self):
+        Alien()
 
     # function to exit the game
     def game_exit(self):
