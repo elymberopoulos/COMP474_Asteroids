@@ -19,39 +19,36 @@ install:
   - python -m pip install -U pip
   - pip install pygame
 
-script:
-  - python TestSuite.py
+matrix:
+  include:
+  - python: 2.7
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
 
-#matrix:
-#  include:
-#  - python: 3.3
-#    dist: xenial
-#    sudo: true
-#    script: python TestSuite.py
-#
-#  - python: 3.4
-#    dist: xenial
-#    sudo: true
-#    script: python TestSuite.py
-#
-#  - python: 3.5
-#    dist: xenial
-#    sudo: true
-#    script: python TestSuite.py
-#
-#  - python: 3.6
-#    dist: xenial
-#    sudo: true
-#    script: python TestSuite.py
-#
-#  - python: 3.7
-#    dist: xenial
-#    sudo: true
-#    script: python TestSuite.py
-#
-#  allow_failures:
-#    - python: 3.3
-#    - python: 3.4
-#
-#  fast_finish: true
+  - python: 3.4
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
+  - python: 3.5
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
+  - python: 3.6
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
+  - python: 3.7
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
+  allow_failures:
+    - python: 3.3
+    - python: 3.4
+
+  fast_finish: true
 

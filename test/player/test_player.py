@@ -37,15 +37,15 @@ class TestPlayer(unittest.TestCase):
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         player = Player.Player()
-        GSPRITES = GAME_SPRITES.sprites()
+
+        #Fire the weapon 5 times. The projectiles group should still be 3.
         for i in range(5):
             time.sleep(.05)
             player.fire_weapon(Weapon)
             GAME_SPRITES.update()
             PROJECTILES.update()
-        bullets = PROJECTILES.sprites()
 
-        self.assertEqual(3, len(bullets))
+        self.assertEqual(3, len(PROJECTILES.sprites()))
 
         GAME_SPRITES.empty()
         PROJECTILES.empty()

@@ -6,6 +6,7 @@ import pygame
 class TestAsteroid(unittest.TestCase):
 
     def test_size(self):
+        # Test that the asteroid sprites are the correct size
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         asteroid = Asteroid.Asteroid()
@@ -17,6 +18,7 @@ class TestAsteroid(unittest.TestCase):
         pygame.quit()
 
     def test_incorrectSizes(self):
+        # Test the BVA values for asteroid sizes and assert they are not equal
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         asteroid = Asteroid.Asteroid()
@@ -41,7 +43,8 @@ class TestAsteroid(unittest.TestCase):
         asteroid = Asteroid.Asteroid()
         starting_y = asteroid.rect.y
         starting_x = asteroid.rect.x
-        asteroid.update()
+        for i in range(5):
+            asteroid.update()
         new_x = asteroid.rect.x
         new_y = asteroid.rect.y
         self.assertTrue(new_y > starting_y)
