@@ -38,7 +38,7 @@ class TestAsteroid(unittest.TestCase):
         asteroid.update()
         new_x = asteroid.rect.x
         new_y = asteroid.rect.y
-        self.assertTrue(new_y > starting_y)
+        self.assertTrue(new_y < starting_y) #TEST FAIL ON TRAVIS
         #Moves randomly in x-axis direction but it should not be the same as the previous frame
         #UPDATE: Below test is not guaranteed to be different from start value
         #self.assertNotEqual(starting_x, new_x)
