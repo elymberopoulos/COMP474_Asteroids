@@ -4,8 +4,6 @@
 
 language: python
 
-os: windows
-
 # Build when pushed to any branch
 branches:
   only:
@@ -16,6 +14,9 @@ branches:
 install:
   - python -m pip install -U pip
   - pip install pygame
+
+virtualenv:
+    system_site_packages: true
 
 matrix:
   include:
