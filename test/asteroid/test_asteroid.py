@@ -1,5 +1,5 @@
 import unittest
-from src.asteroid import Asteroid
+from src import Asteroid
 from Constants import *
 import pygame
 

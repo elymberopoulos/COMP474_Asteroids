@@ -1,12 +1,14 @@
-import sys
-from src.asteroid import Asteroid, Asteroid2, Asteroid3
-from src.player import Player
-from Constants import *
-from Weapon import *
-import random
-import os
+# import sys
+# from src.asteroid import Asteroid, Asteroid2, Asteroid3
+# from src import Player
+# from Constants import *
+# from Weapon import *
+# import random
+# import os
+
 
 class Score:
+
     def print_score(self):
         with open("Score_tracker.txt") as x:
             totals = []

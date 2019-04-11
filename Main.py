@@ -1,11 +1,8 @@
 import sys
-from src.asteroid import Asteroid, Asteroid2, Asteroid3
 from src.player import Player
-from Constants import *
 from Weapon import *
-from src.collision import Collider
+from src.collision.Collider import Collider
 from src.gameManager import Manager
-import random
 import Score
 # start the pygame engine
 pygame.init()
@@ -48,6 +45,7 @@ while True:
     GAME_SPRITES.draw(window)
 
     # imported module for collision detection and asteroid respawn
-    Collider.Collider(player)
+    Collider(player)
+    # Collider.Collider(player)
     pygame.display.flip()
 
