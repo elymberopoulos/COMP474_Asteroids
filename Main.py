@@ -1,11 +1,9 @@
 import sys
-from src.asteroid import Asteroid, Asteroid2, Asteroid3
 from src.player import Player
-from Constants import *
 from Weapon import *
-from src.collision import Collider
+from src.collision.Collider import Collider
 from src.gameManager import Manager
-import random
+from src.alien.Alien import Alien
 import Score
 # start the pygame engine
 pygame.init()
@@ -26,8 +24,16 @@ gameManager = Manager.Manager()
 gameManager.startMusic()
 gameManager.AstroidInit()
 
+rand = random.randint(0,100)
+counter = 0
+print(rand)
+
 # main game loop
 while True:
+    counter += 1
+    if counter == rand:
+        gameManager.Alien()
+
     # advance the clock
     clock.tick(FPS)
     # set the background to black
@@ -48,6 +54,6 @@ while True:
     GAME_SPRITES.draw(window)
 
     # imported module for collision detection and asteroid respawn
-    Collider.Collider(player)
+    Collider(player)
     pygame.display.flip()
 

@@ -1,5 +1,5 @@
 import unittest
-from src.player import Player
+from src import Player
 from Constants import *
 from WeaponList import *
 import pygame

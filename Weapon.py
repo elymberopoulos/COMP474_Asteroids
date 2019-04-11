@@ -32,7 +32,7 @@ class Weapon(pygame.sprite.Sprite):
 
     # Weapons take a copy of the initial position, velocity, and direction to keep up with the ship
     def __init__(self, in_pos, in_vel, in_dir):
-        if Weapon.WEAPON_PROJECTILES > Weapon.WEAPON_MAX_PROJECTILES:
+        if type(self).WEAPON_PROJECTILES > type(self).WEAPON_MAX_PROJECTILES:
             self.kill()
             return
 
@@ -66,7 +66,7 @@ class Weapon(pygame.sprite.Sprite):
         self.projectile_start_time = pygame.sprite.get_ticks()
 
         # keeps track of how many projectiles of this weapon type are on the screen
-        Weapon.WEAPON_PROJECTILES += 1
+        type(self).WEAPON_PROJECTILES += 1
 
     def update(self, *args):
         # handles the screen wrapping
@@ -82,7 +82,7 @@ class Weapon(pygame.sprite.Sprite):
         # removal of a projectile based on time
         if pygame.sprite.get_ticks() - self.projectile_start_time > self.WEAPON_LIFE_TIME:
             # decrement the number of projectiles of this weapon class
-            Weapon.WEAPON_PROJECTILES -= 1
+            type(self).WEAPON_PROJECTILES -= 1
             # tell pygame to kill this object
             self.kill()
 

@@ -14,14 +14,14 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         # ship without engine
-        self.ship_without_engine = pygame.image.load(os.path.join(IMG_DIR, "Ship_Without_Engine.png")).convert()
+        self.ship_without_engine = pygame.image.load(os.path.join(IMG_DIR, "Ship_Without_Engine.png")).convert_alpha()
         # ship without engine reference image of the player for rotation
-        self.ship_without_engine_ref = pygame.image.load(os.path.join(IMG_DIR, "Ship_Without_Engine.png")).convert()
+        self.ship_without_engine_ref = pygame.image.load(os.path.join(IMG_DIR, "Ship_Without_Engine.png")).convert_alpha()
 
         # ship without engine
-        self.ship_with_engine = pygame.image.load(os.path.join(IMG_DIR, "Ship_With_Engine.png")).convert()
+        self.ship_with_engine = pygame.image.load(os.path.join(IMG_DIR, "Ship_With_Engine.png")).convert_alpha()
         # ship with engine reference image of the player for rotation
-        self.ship_with_engine_ref = pygame.image.load(os.path.join(IMG_DIR, "Ship_With_Engine.png")).convert()
+        self.ship_with_engine_ref = pygame.image.load(os.path.join(IMG_DIR, "Ship_With_Engine.png")).convert_alpha()
 
         # sprite image of the player
         self.image = self.ship_without_engine
@@ -64,6 +64,7 @@ class Player(pygame.sprite.Sprite):
 
     def rotate(self, angle):
         self.image = pygame.transform.rotate(self.reference_image, angle)
+        self.rect = self.image.get_rect()
         self.dir = vec(0, 1).rotate(angle)
 
     def update(self, *args):
