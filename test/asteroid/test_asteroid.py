@@ -13,6 +13,8 @@ class TestAsteroid(unittest.TestCase):
         width = asteroid.image.get_width()
         self.assertEqual(40, height)
         self.assertEqual(40, width)
+        GAME_SPRITES.empty()
+        pygame.quit()
 
     def test_incorrectSizes(self):
         pygame.init()
@@ -26,10 +28,14 @@ class TestAsteroid(unittest.TestCase):
         self.assertNotEqual(41, height)
         self.assertNotEqual(39, width)
         self.assertNotEqual(41, height)
+        GAME_SPRITES.empty()
+        pygame.quit()
+
 
     def test_update(self):
         #Test that the asteroid is moving as expected.
         #Save start location update a frame then assert that the new location has changed
+
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         asteroid = Asteroid.Asteroid()
@@ -38,7 +44,11 @@ class TestAsteroid(unittest.TestCase):
         asteroid.update()
         new_x = asteroid.rect.x
         new_y = asteroid.rect.y
-        self.assertTrue(new_y < starting_y) #TEST FAIL ON TRAVIS
+        self.assertTrue(new_y > starting_y)
+
         #Moves randomly in x-axis direction but it should not be the same as the previous frame
         #UPDATE: Below test is not guaranteed to be different from start value
         #self.assertNotEqual(starting_x, new_x)
+        GAME_SPRITES.empty()
+        pygame.quit()
+
