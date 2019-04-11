@@ -4,10 +4,9 @@
 
 language: python
 python:
-  - "2"
-  - "3"
-  - "3.5"
   - "3.7"
+  - "3.6"
+  - "3.5"
 
 # Build when pushed to any branch
 branches:
@@ -17,20 +16,37 @@ branches:
 
 # command to install dependencies
 install:
+  - python -m pip install -U pip
   - pip install pygame
 
 matrix:
   include:
+  - python: 2.7
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
+  - python: 3.4
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
   - python: 3.5
-    script: py TestSuite.py
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
+
+  - python: 3.6
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
 
   - python: 3.7
-    script: py TestSuite.py
+    dist: xenial
+    sudo: true
+    script: python TestSuite.py
 
   allow_failures:
-    - python: 2
-    - python: 3.1
-    - python: 3.2
     - python: 3.3
     - python: 3.4
 
