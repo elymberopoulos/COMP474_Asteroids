@@ -4,6 +4,7 @@ from src.asteroid import Asteroid
 from Constants import *
 from WeaponList import *
 from src.collision import Collider
+from src.gameManager import Manager
 import pygame
 import time
 
@@ -32,8 +33,27 @@ class TestSpriteCounter(unittest.TestCase):
         #     PROJECTILES.update()
         #
         # self.assertEqual(2, len(GAME_SPRITES))
-        # GAME_SPRITES.empty()
-        # PROJECTILES.empty()
+        GAME_SPRITES.empty()
+        PROJECTILES.empty()
         pygame.quit()
 
+    def test_AsteroidInit(self):
+        #Tests that the game manager is adding the correct amount of asteroids to the game.
+        pygame.init()
+        window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        gameManager = Manager.Manager()
+        gameManager.AstroidInit()
+        self.assertEqual(10, len(GAME_SPRITES.sprites()))
+        GAME_SPRITES.empty()
+        pygame.quit()
 
+    def test_AsteroidInitBVA(self):
+        #BVA test to make sure that the game manager is not adding any extra or fewer asteroids to the game.
+        pygame.init()
+        window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        gameManager = Manager.Manager()
+        gameManager.AstroidInit()
+        self.assertNotEqual(9, len(GAME_SPRITES.sprites()))
+        self.assertNotEqual(11, len(GAME_SPRITES.sprites()))
+        GAME_SPRITES.empty()
+        pygame.quit()
