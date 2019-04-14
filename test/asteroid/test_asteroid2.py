@@ -29,8 +29,19 @@ class TestAsteroid2(unittest.TestCase):
         self.assertNotEqual(39, height)
         self.assertNotEqual(41, height)
         self.assertNotEqual(39, width)
-        self.assertNotEqual(41, height)
+        self.assertNotEqual(41, width)
         GAME_SPRITES.empty()
+        pygame.quit()
+
+
+    def test_startLocation(self):
+        pygame.init()
+        window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        for i in range(100):
+            asteroid = Asteroid2.Asteroid2()
+            self.assertFalse(asteroid.rect.y < 0)
+            self.assertFalse(asteroid.rect.y > (WIN_HEIGHT - 100) + 1)
+            GAME_SPRITES.empty()
         pygame.quit()
 
     def test_update(self):
