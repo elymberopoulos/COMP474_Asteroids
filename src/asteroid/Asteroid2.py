@@ -1,7 +1,7 @@
 import pygame, random
 import Constants
 import os
-
+from src.asteroid.SmallAsteroid import SmallAsteroid
 """
 This class of asteroids spawn at the left side of the screen and move to the right side of the window.
 """
@@ -35,3 +35,8 @@ class Asteroid2(pygame.sprite.Sprite):
             self.rect.y = random.randrange(0, Constants.WIN_HEIGHT-100)
             self.speed_y = random.randrange(-2,3)
             self.speed_x = random.randrange(1,4)
+
+    def __del__(self):
+        SmallAsteroid(self.rect.x,self.rect.y)
+        SmallAsteroid(self.rect.x,self.rect.y)
+        SmallAsteroid(self.rect.x,self.rect.y)
