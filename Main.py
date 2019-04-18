@@ -27,14 +27,13 @@ gameManager.AstroidInit()
 rand = random.randint(0,100)
 counter = 0
 print(rand)
-
+totalscore = 0
 # main game loop
 while True:
     counter += 1
     if counter == rand:
         gameManager.Alien()
 
-    totalscore = Score().print_score()
     # advance the clock
     clock.tick(FPS)
     # set the background to black
@@ -57,6 +56,6 @@ while True:
     GAME_SPRITES.draw(window)
 
     # imported module for collision detection and asteroid respawn
-    Collider(player)
+    Collider(player,totalscore)
     pygame.display.flip()
 
