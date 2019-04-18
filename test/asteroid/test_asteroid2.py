@@ -15,7 +15,7 @@ class TestAsteroid2(unittest.TestCase):
         self.assertEqual(40, height)
         self.assertEqual(40, width)
         GAME_SPRITES.empty()
-        pygame.quit()
+        # pygame.quit()
 
     def test_incorrectSizes(self):
         # Test the BVA values for asteroid sizes and assert they are not equal
@@ -31,7 +31,18 @@ class TestAsteroid2(unittest.TestCase):
         self.assertNotEqual(39, width)
         self.assertNotEqual(41, width)
         GAME_SPRITES.empty()
-        pygame.quit()
+        # pygame.quit()
+
+
+    def test_startLocation(self):
+        pygame.init()
+        window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        for i in range(100):
+            asteroid = Asteroid2.Asteroid2()
+            self.assertFalse(asteroid.rect.y < 0)
+            self.assertFalse(asteroid.rect.y > (WIN_HEIGHT - 100) + 1)
+            GAME_SPRITES.empty()
+        # pygame.quit()
 
 
     def test_startLocation(self):
@@ -58,10 +69,23 @@ class TestAsteroid2(unittest.TestCase):
         new_y = asteroid.rect.y
         self.assertTrue(new_x > starting_x)
 
-        #Moves randomly in y-axis direction but it should not be the same as the previous frame
-        #UPDATE: Below test is not guaranteed to be different from start value
-        #self.assertNotEqual(starting_y, new_y)
         GAME_SPRITES.empty()
-        pygame.quit()
+        # pygame.quit()
+
+    def test_Y_AxisSpeed(self):
+        # this test is for making sure that the x-axis movement of the asteroid is within its accepted bounds
+        pygame.init()
+        window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        asteroid = Asteroid2.Asteroid2()
+        starting_y = asteroid.speed_y
+
+        # Update the frame for the asteroid once
+        asteroid.update()
+        new_y = asteroid.speed_y
+        # Assert that the y-axis is not greater than or less than its allowed bounds
+        self.assertFalse(new_y < starting_y - 2)
+        self.assertFalse(new_y > starting_y + 3)
+        GAME_SPRITES.empty()
+        # pygame.quit()
 
 

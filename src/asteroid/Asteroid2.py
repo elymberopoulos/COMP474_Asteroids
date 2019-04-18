@@ -33,5 +33,5 @@ class Asteroid2(pygame.sprite.Sprite):
         if self.rect.top > Constants.WIN_HEIGHT + 15 or self.rect.left < -15 or self.rect.right > Constants.WIN_WIDTH:
             self.rect.x = random.randrange(-20, -10)
             self.rect.y = random.randrange(0, Constants.WIN_HEIGHT-100)
-            self.speed_y = random.randrange(1,4)
-            self.speed_x = random.randrange(1,3)
+            self.speed_y = random.randrange(-2,3)
+            self.speed_x = random.randrange(1,4)

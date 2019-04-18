@@ -36,6 +36,6 @@ class Asteroid(pygame.sprite.Sprite):
             self.rect.x = random.randrange(
                 Constants.WIN_WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -50)
-            self.speed_y = random.randrange(1, 4)
+            self.speed_y = random.randrange(-2, 2)
             self.speed_x = random.randrange(-2, 2)
 
