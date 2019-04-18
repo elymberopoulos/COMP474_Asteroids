@@ -4,7 +4,7 @@ from Weapon import *
 from src.collision.Collider import Collider
 from src.gameManager import Manager
 from src.alien.Alien import Alien
-import Score
+from Score import Score
 # start the pygame engine
 pygame.init()
 # create the pygame window with the specified dimentions
@@ -34,6 +34,7 @@ while True:
     if counter == rand:
         gameManager.Alien()
 
+    totalscore = Score().print_score()
     # advance the clock
     clock.tick(FPS)
     # set the background to black
@@ -47,7 +48,9 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 # exit the game
                 gameManager.game_exit()
-
+    font = pygame.font.SysFont("monospace", 15)
+    label = font.render("Score: " + str(totalscore), 1 , (255,255,255))
+    window.blit(label, (600,20))
     # update the sprites
     GAME_SPRITES.update()
     # draw the game sprites in the window

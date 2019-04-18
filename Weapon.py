@@ -31,7 +31,7 @@ class Weapon(pygame.sprite.Sprite):
     WEAPON_COOL_BEGIN = 0
 
     # Weapons take a copy of the initial position, velocity, and direction to keep up with the ship
-    def __init__(self, in_pos, in_vel, in_dir):
+    def __init__(self, in_pos, in_vel, in_dir, IN_SPRITE_LIST):
         if type(self).WEAPON_PROJECTILES > type(self).WEAPON_MAX_PROJECTILES:
             self.kill()
             return
@@ -43,6 +43,9 @@ class Weapon(pygame.sprite.Sprite):
 
         # add to projectile group for collision detection
         PROJECTILES.add(self)
+
+        # additional sprite list
+        IN_SPRITE_LIST.add(self)
 
         # sprite image of the projectile
         self.image = pygame.Surface((self.WEAPON_SPRITE_SIZE_X, self.WEAPON_SPRITE_SIZE_Y))

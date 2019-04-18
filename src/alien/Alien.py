@@ -26,7 +26,7 @@ class Alien(pygame.sprite.Sprite):
         self.angle = 0
 
         GAME_SPRITES.add(self)
-        # ALIEN.add(self)
+        ALIEN.add(self)
 
     def fire_weapon(self, in_weapon):
         # check if the number of projectiles on the screen is less than the number of max projectiles
@@ -36,7 +36,7 @@ class Alien(pygame.sprite.Sprite):
                 # create a new projectile. The projectile starting conditions are the same as the ship's
                 # position, velocity, and direction. A deep copy was used to affect a pass by value rather than a
                 # pass by reference.
-                current_weapon = in_weapon(copy.deepcopy( copy.deepcopy(self.pos) ), copy.deepcopy(self.vel), vec(0, -1).rotate(-self.angle))
+                current_weapon = in_weapon(copy.deepcopy( copy.deepcopy(self.pos) ), copy.deepcopy(self.vel), vec(0, -1).rotate(-self.angle), ALIEN_PROJECTILES)
                 in_weapon.WEAPON_COOL_BEGIN = pygame.sprite.get_ticks()
                 # print(in_weapon.WEAPON_NAME + " : " + in_weapon.WEAPON_PROJECTILES.__str__())
 
