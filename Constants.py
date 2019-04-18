@@ -37,3 +37,5 @@ PLAYER_ANGLE_VEL = 3
 GAME_SPRITES = pygame.sprite.Group()
 PROJECTILES = pygame.sprite.Group()
 ASTEROIDS = pygame.sprite.Group()
+PLAYER_PROJECTILES = pygame.sprite.Group()
+ALIEN_PROJECTILES = pygame.sprite.Group()
