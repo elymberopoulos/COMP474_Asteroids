@@ -2,6 +2,7 @@ import pygame
 import random
 import Constants
 import os
+from src.asteroid.SmallAsteroid import SmallAsteroid
 
 """
 This class of asteroids spawn at the top of the screen and move to the bottom side of the window.
@@ -39,3 +40,8 @@ class Asteroid(pygame.sprite.Sprite):
             self.speed_y = random.randrange(-2, 2)
             self.speed_x = random.randrange(-2, 2)
 
+    # on destruction, spawn 3 small asteroids
+    def __del__(self):
+        SmallAsteroid(self.rect.x, self.rect.y)
+        SmallAsteroid(self.rect.x, self.rect.y)
+        SmallAsteroid(self.rect.x, self.rect.y)
