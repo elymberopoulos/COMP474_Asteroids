@@ -26,7 +26,7 @@ class Alien(pygame.sprite.Sprite):
         self.angle = 0
 
         GAME_SPRITES.add(self)
-        # ALIEN.add(self)
+        ALIEN.add(self)
 
     def fire_weapon(self, in_weapon):
         # check if the number of projectiles on the screen is less than the number of max projectiles

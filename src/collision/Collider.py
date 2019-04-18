@@ -13,6 +13,7 @@ class Collider:
     def __init__(self, player):
 
         bulletCollide = pygame.sprite.groupcollide(ASTEROIDS, PROJECTILES, True, False)
+        alienTakedown = pygame.sprite.groupcollide(ALIEN, PLAYER_PROJECTILES, True,False)
         explosion_effect = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'explosion.wav'))
         self.PLAYER_LIVES = 3
         for collision in bulletCollide:
@@ -40,9 +41,13 @@ class Collider:
 
         # Check for player collisions with asteroids
         collisions = pygame.sprite.spritecollide(player, ASTEROIDS, False, pygame.sprite.collide_circle)
-        if collisions:
+        aliencollide = pygame.sprite.spritecollide(player, ALIEN_PROJECTILES, False, pygame.sprite.collide_circle)
+        if collisions or aliencollide:
             self.print_score()
             self.game_exit()
+        if alienTakedown:
+            explosion_effect.play()
+
 
     def game_exit(self):
         pygame.quit()
