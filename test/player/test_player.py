@@ -27,6 +27,16 @@ class TestPlayer(unittest.TestCase):
         GAME_SPRITES.empty()
         # pygame.quit()
 
+
+    def test_StartVelocity(self):
+        #Test that a player's initial velocity is (0,0) with its vector
+        pygame.init()
+        window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        player = Player.Player()
+        self.assertEqual(vec(0,0), player.vel)
+        GAME_SPRITES.empty()
+        pygame.quit()
+
     def test_StartAcceleration(self):
         #Test that a player's initial acceleration is (0,0) with its vector
         pygame.init()
@@ -34,7 +44,7 @@ class TestPlayer(unittest.TestCase):
         player = Player.Player()
         self.assertEqual(vec(0,0), player.acc)
         GAME_SPRITES.empty()
-        # pygame.quit()
+        pygame.quit()
 
     def test_StartDirection(self):
         #Test that a player's initial acceleration is (0,0) with its vector
@@ -43,7 +53,8 @@ class TestPlayer(unittest.TestCase):
         player = Player.Player()
         self.assertEqual(vec(1,0), player.dir)
         GAME_SPRITES.empty()
-        # pygame.quit()
+
+        pygame.quit()
 
     def test_PlayerRotation(self):
         #Test that a player's rotation is handled correctly.
@@ -59,7 +70,7 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(vec(-0.173648,0.984808), player.dir)
 
         GAME_SPRITES.empty()
-        # pygame.quit()
+        pygame.quit()
 
     def test_Shoot(self):
         #Check that one projectile has been added to the PROJECTILES list after firing the weapon

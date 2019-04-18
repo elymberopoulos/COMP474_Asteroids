@@ -44,6 +44,16 @@ class TestAsteroid(unittest.TestCase):
             GAME_SPRITES.empty()
         # pygame.quit()
 
+    def test_startLocation(self):
+        pygame.init()
+        window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+        for i in range(100):
+            asteroid = Asteroid.Asteroid()
+            self.assertFalse(asteroid.rect.x < 0)
+            self.assertFalse(asteroid.rect.x > (WIN_WIDTH - asteroid.rect.width) + 1)
+            GAME_SPRITES.empty()
+        pygame.quit()
+
 
     def test_update(self):
         #Test that the asteroid is moving as expected.
