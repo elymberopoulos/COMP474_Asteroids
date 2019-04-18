@@ -13,6 +13,8 @@ THE CODE FOR THIS CLASS NEEDS TO BE ALTERED TO SPAWN ON A DESTROYED BIG ASTEROID
 
 
 class SmallAsteroid(pygame.sprite.Sprite):
+
+    # small asteroid takes in the x and y position as a starting location
     def __init__(self, in_x, in_y):
         pygame.sprite.Sprite.__init__(self)
 

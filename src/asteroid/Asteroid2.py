@@ -36,7 +36,8 @@ class Asteroid2(pygame.sprite.Sprite):
             self.speed_y = random.randrange(-2,3)
             self.speed_x = random.randrange(1,4)
 
+    # on destruction, spawn 3 small asteroids
     def __del__(self):
-        SmallAsteroid(self.rect.x,self.rect.y)
-        SmallAsteroid(self.rect.x,self.rect.y)
-        SmallAsteroid(self.rect.x,self.rect.y)
+        SmallAsteroid(self.rect.x, self.rect.y)
+        SmallAsteroid(self.rect.x, self.rect.y)
+        SmallAsteroid(self.rect.x, self.rect.y)

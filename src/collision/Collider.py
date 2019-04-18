@@ -10,16 +10,24 @@ from Score import Score
 
 class Collider:
 
-    def __init__(self, player, score):
+    def __init__(self, in_player):
+
+        self.score = 0
+        self.score_board(0)
+        self.player = in_player
+
+    def check_collisions(self):
 
         bulletCollide = pygame.sprite.groupcollide(ASTEROIDS, PROJECTILES, True, False)
-        alienTakedown = pygame.sprite.groupcollide(ALIEN, PLAYER_PROJECTILES, True,False)
+        alienTakedown = pygame.sprite.groupcollide(ALIEN, PLAYER_PROJECTILES, True, False)
         explosion_effect = pygame.mixer.Sound(os.path.join(AUDIO_DIR, 'explosion.wav'))
         self.PLAYER_LIVES = 3
+
         for collision in bulletCollide:
-            score += 10
+
+            self.score += 10
             explosion_effect.play()
-            self.score_board(10)
+            self.score_board(self.score)
             # Randomly spawn new asteroid from different sides of the screen
             newAstroid = random.randrange(0, 3)
             if newAstroid == 0:
@@ -41,15 +49,15 @@ class Collider:
                 GAME_SPRITES.add(asteroid)
 
         # Check for player collisions with asteroids
-        collisions = pygame.sprite.spritecollide(player, ASTEROIDS, False, pygame.sprite.collide_circle)
-        aliencollide = pygame.sprite.spritecollide(player, ALIEN_PROJECTILES, False, pygame.sprite.collide_circle)
+        collisions = pygame.sprite.spritecollide(self.player, ASTEROIDS, False, pygame.sprite.collide_circle)
+        aliencollide = pygame.sprite.spritecollide(self.player, ALIEN_PROJECTILES, False, pygame.sprite.collide_circle)
+
         if collisions or aliencollide:
             self.print_score()
             self.game_exit()
         if alienTakedown:
-            score += 50
+            self.score += 50
             explosion_effect.play()
-
 
     def game_exit(self):
         pygame.quit()

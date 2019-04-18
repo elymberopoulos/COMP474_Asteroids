@@ -17,7 +17,8 @@ class Score:
                 totals.append(int(line))
         for y in totals:
             self.total = total + y
-        return total   
+        return total
+
     def clear_score(self):
         score_file = open("Score_tracker.txt","w")
         score_file.truncate()
