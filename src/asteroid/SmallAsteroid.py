@@ -4,11 +4,7 @@ import Constants
 import os
 
 """
-
-******************************************************************************** |
-THE CODE FOR THIS CLASS NEEDS TO BE ALTERED TO SPAWN ON A DESTROYED BIG ASTEROID |
-******************************************************************************** |
-
+This asteroid is spawned when a larger asteroid is destroyed
 """
 
 
@@ -29,7 +25,7 @@ class SmallAsteroid(pygame.sprite.Sprite):
         # Set start location and speeds
         self.rect.x = in_x # random.randrange(Constants.WIN_WIDTH - self.rect.width)
         self.rect.y = in_y    # random.randrange(-100, -50)
-        self.speed_y = random.randrange(1, 4)
+        self.speed_y = random.randrange(-2, 2)
         self.speed_x = random.randrange(-2, 2)
 
         Constants.GAME_SPRITES.add(self)
@@ -44,6 +40,6 @@ class SmallAsteroid(pygame.sprite.Sprite):
             self.rect.x = random.randrange(
                 Constants.WIN_WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -50)
-            self.speed_y = random.randrange(1, 4)
+            self.speed_y = random.randrange(-2, 2)
             self.speed_x = random.randrange(-2, 2)
 

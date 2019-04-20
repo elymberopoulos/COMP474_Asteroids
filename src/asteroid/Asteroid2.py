@@ -38,6 +38,8 @@ class Asteroid2(pygame.sprite.Sprite):
 
     # on destruction, spawn 3 small asteroids
     def __del__(self):
+        Constants.GAME_SPRITES.remove(self)
+        Constants.ASTEROIDS.remove(self)
         SmallAsteroid(self.rect.x, self.rect.y)
         SmallAsteroid(self.rect.x, self.rect.y)
         SmallAsteroid(self.rect.x, self.rect.y)

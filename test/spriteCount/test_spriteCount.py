@@ -18,11 +18,14 @@ class TestSpriteCounter(unittest.TestCase):
     #     window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
     #     player = Player.Player()
     #     asteroid = Asteroid.Asteroid()
+    #     collider = Collider.Collider(player)
+    #     asteroidLIST = ASTEROIDS.sprites()
+    #     gameSpriteLIST = GAME_SPRITES.sprites()
     #     # two sprites. One player and asteroid
     #     self.assertEqual(2, len(GAME_SPRITES))
     #
     #
-    #     GAME_SPRITES.update()
+    #     # GAME_SPRITES.update()
     #     player.fire_weapon(Weapon)
     #     self.assertEqual(3 ,len(GAME_SPRITES.sprites()))
     #     self.assertEqual(1, len(PROJECTILES.sprites()))
@@ -31,12 +34,18 @@ class TestSpriteCounter(unittest.TestCase):
     #     # Set the location of the asteroid so it collides with bullet
     #     asteroid.rect.x = 120
     #     asteroid.rect.y = 120
-    #     firedBullet.pos.x = 127
-    #     firedBullet.pos.y = 127
-    #     # update sprites to see if it collides
-    #     pygame.sprite.groupcollide(ASTEROIDS, PROJECTILES, True, False)
-    #     self.assertEqual(2, len(GAME_SPRITES))
+    #     firedBullet.pos.x = 130
+    #     firedBullet.pos.y = 135
+    #     for i in range(100):
+    #         PROJECTILES.update()
+    #         GAME_SPRITES.update()
+    #         ASTEROIDS.update()
+    #         collider.check_collisions()
+    #         # update sprites to see if it collides
+    #
+    #     self.assertEqual(3, len(ASTEROIDS.sprites()))
     #     GAME_SPRITES.empty()
+    #     ASTEROIDS.empty()
     #     PROJECTILES.empty()
     #     pygame.quit()
 
@@ -46,7 +55,7 @@ class TestSpriteCounter(unittest.TestCase):
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
         gameManager = Manager.Manager()
         gameManager.AstroidInit()
-        self.assertEqual(10, len(GAME_SPRITES.sprites()))
+        self.assertEqual(7, len(GAME_SPRITES.sprites()))
         GAME_SPRITES.empty()
         pygame.quit()
 
