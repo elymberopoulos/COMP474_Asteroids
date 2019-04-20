@@ -83,7 +83,7 @@ class TestAsteroid3(unittest.TestCase):
         new_y = asteroid.speed_y
         # Assert that the y-axis is not greater than or less than its allowed bounds
         self.assertFalse(new_y < starting_y - 2)
-        self.assertFalse(new_y > starting_y + 3)
+        self.assertFalse(new_y > starting_y + 2)
         GAME_SPRITES.empty()
         # pygame.quit()
 

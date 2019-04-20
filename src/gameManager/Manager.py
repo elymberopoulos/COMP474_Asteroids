@@ -17,11 +17,11 @@ class Manager:
 
 
     def AstroidInit(self):
-        for i in range(10):
-            if i <= 2:
+        for i in range(7):
+            if i < 3:
                 Asteroid()
                 # Asteroid.Asteroid()
-            elif i <= 6:
+            elif i < 6:
                 Asteroid2()
                 # Asteroid2.Asteroid2()
             else:
