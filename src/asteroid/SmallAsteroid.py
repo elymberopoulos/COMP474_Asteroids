@@ -16,10 +16,12 @@ class SmallAsteroid(pygame.sprite.Sprite):
 
         # self.asteroidImage = pygame.image.load(os.path.join(Constants.IMG_DIR, "Asteroid_1.PNG")).convert_alpha()
        # self.image = self.asteroidImage
-
+        self.asteroidImage = pygame.image.load(os.path.join(Constants.IMG_DIR, "Small_Asteroid.PNG")).convert_alpha()
+        self.image = self.asteroidImage
         self.image = pygame.Surface((10, 10))
-
+        #self.size = self.image.get_size()
         self.image.fill((150, 150, 150))
+        #pygame.transform.scale(self.image,(10,10))
         self.rect = self.image.get_rect()
 
         # Set start location and speeds
@@ -32,7 +34,7 @@ class SmallAsteroid(pygame.sprite.Sprite):
         Constants.ASTEROIDS.add(self)
 
     def update(self):
-        # self.image = self.asteroidImage
+        self.image = self.asteroidImage
         self.rect.y += self.speed_y
         self.rect.x += self.speed_x
 

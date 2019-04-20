@@ -27,7 +27,7 @@ gameManager.AstroidInit()
 
 collider = Collider(player)
 
-rand = random.randint(0, 100)
+rand = random.randint(0, 1000)
 counter = 0
 print(rand)
 totalscore = 0
@@ -36,6 +36,8 @@ while True:
     counter += 1
     if counter == rand:
         gameManager.Alien()
+        rand = random.randint(0,1000)
+        counter = 0
 
     # advance the clock
     clock.tick(FPS)
