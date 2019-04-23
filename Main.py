@@ -20,8 +20,8 @@ player = Player.Player()
 
 # Game management functions have been abstracted out to their own class for organization
 gameManager = Manager.Manager()
-gameManager.startMusic()
-gameManager.AstroidInit()
+gameManager.start_music()
+gameManager.create_asteroid(7)
 
 # instantiate the collider
 collider = Collider(player, PLAYER_LIVES)
@@ -29,8 +29,6 @@ collider = Collider(player, PLAYER_LIVES)
 # define the basic font
 font = pygame.font.SysFont("monospace", 15)
 
-rand = random.randint(0, 1000)
-counter = 0
 
 # function to manage pause
 def pause():
@@ -54,15 +52,22 @@ def pause():
                     # exit the game
                     gameManager.game_exit()
 
+
+def random_alien(in_range):
+    # generate the first random value
+    first_value = random.randint(0, in_range)
+    # generate the second random value
+    second_value = random.randint(0, in_range)
+    # if the values match, then create an alien
+    if first_value == second_value:
+        gameManager.create_alien(1)
+
+
 # main game loop
 while True:
 
-    # create aliens
-    counter += 1
-    if counter == rand:
-        gameManager.Alien()
-        rand = random.randint(0, 1000)
-        counter = 0
+    # create random aliens
+    random_alien(1000)
 
     # advance the clock
     clock.tick(FPS)
@@ -72,7 +77,6 @@ while True:
     # check for events
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-
             # check for the escape key press
             if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
                 # exit the game

@@ -15,8 +15,6 @@ loader = unittest.TestLoader()
 suite = unittest.TestSuite()
 
 suite.addTests(loader.loadTestsFromModule(test_asteroid))
-suite.addTests(loader.loadTestsFromModule(test_asteroid2))
-suite.addTests(loader.loadTestsFromModule(test_asteroid3))
 suite.addTests(loader.loadTestsFromModule(test_smallAsteroid))
 suite.addTests(loader.loadTestsFromModule(test_player))
 suite.addTests(loader.loadTestsFromModule(test_spriteCount))

@@ -1,7 +1,5 @@
 import sys
 from src.asteroid.Asteroid import Asteroid
-from src.asteroid.Asteroid2 import Asteroid2
-from src.asteroid.Asteroid3 import Asteroid3
 from Weapon import *
 from Constants import *
 import random
@@ -21,7 +19,6 @@ class Collider:
         self.lives = in_player_lives
 
     def check_collisions(self):
-
         # collision between asteroids and projectiles
         asteroid_bullet_collision = pygame.sprite.groupcollide(ASTEROIDS, PROJECTILES, True, False)
 
@@ -42,6 +39,7 @@ class Collider:
             # play explosion sound effect
             explosion_effect.play()
 
+            """  
             # Randomly spawn new asteroid from different sides of the screen
             newAstroid = random.randrange(0, 3)
             if newAstroid == 0:
@@ -49,18 +47,7 @@ class Collider:
                 # asteroid = Asteroid.Asteroid()
                 ASTEROIDS.add(asteroid)
                 GAME_SPRITES.add(asteroid)
-
-            elif newAstroid == 1:
-                asteroid = Asteroid2()
-                # asteroid = Asteroid2.Asteroid2()
-                ASTEROIDS.add(asteroid)
-                GAME_SPRITES.add(asteroid)
-
-            else:
-                asteroid = Asteroid3()
-                # asteroid = Asteroid3.Asteroid3()
-                ASTEROIDS.add(asteroid)
-                GAME_SPRITES.add(asteroid)
+            """
 
         if not self.player.invincible:
             # Check for player collisions with asteroids
