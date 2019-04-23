@@ -6,15 +6,15 @@ from Weapon import *
 import pygame
 from src.alien.Alien import Alien
 
+
 class Manager:
     def __init__(self):
-        self
+        pass
 
     def startMusic(self):
         music = pygame.mixer.music.load(os.path.join(AUDIO_DIR, 'beat1.wav'))
         pygame.mixer.music.set_volume(0.1)
         pygame.mixer.music.play(loops=-1)
-
 
     def AstroidInit(self):
         for i in range(7):

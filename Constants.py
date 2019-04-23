@@ -34,6 +34,7 @@ ASTEROID_SPEED = .5
 PLAYER_ACC = .5
 PLAYER_FRICTION = -0.05
 PLAYER_ANGLE_VEL = 3
+PLAYER_LIVES = 3
 
 # standard lists
 GAME_SPRITES = pygame.sprite.Group()

@@ -3,6 +3,7 @@ from src.player import Player
 from Weapon import *
 from src.collision.Collider import Collider
 from src.gameManager import Manager
+from Constants import *
 from src.alien.Alien import Alien
 from Score import Score
 
@@ -25,7 +26,7 @@ gameManager = Manager.Manager()
 gameManager.startMusic()
 gameManager.AstroidInit()
 
-collider = Collider(player)
+collider = Collider(player, PLAYER_LIVES)
 
 rand = random.randint(0, 1000)
 counter = 0
@@ -57,12 +58,17 @@ while True:
     # imported module for collision detection and asteroid respawn
     collider.check_collisions()
 
-    label = font.render("Score: " + str(collider.score), 1, (255, 255, 255))
-    window.blit(label, (600, 20))
+    # display the score
+    score_label = font.render("Score: " + str(collider.score), 1, (255, 255, 255))
+    window.blit(score_label, (WIN_WIDTH*.75, 20))
+
+    # display the number of lives
+    lives_label = font.render("LIVES: " + str(collider.lives), 1, (255, 255, 255))
+    window.blit(lives_label, (WIN_WIDTH*.25, 20))
+
     # update the sprites
     GAME_SPRITES.update()
     # draw the game sprites in the window
     GAME_SPRITES.draw(window)
-
 
     pygame.display.flip()
