@@ -6,15 +6,13 @@ from Weapon import *
 from Constants import *
 import random
 import os
-from Score import Score
-
 
 class Collider:
 
     def __init__(self, in_player, in_player_lives):
 
+        # the player's score!
         self.score = 0
-        self.score_board(0)
 
         # initialize the player
         self.player = in_player
@@ -44,9 +42,6 @@ class Collider:
             # play explosion sound effect
             explosion_effect.play()
 
-            # update score board
-            self.score_board(self.score)
-
             # Randomly spawn new asteroid from different sides of the screen
             newAstroid = random.randrange(0, 3)
             if newAstroid == 0:
@@ -74,7 +69,6 @@ class Collider:
             player_alien_collisions = pygame.sprite.spritecollide(self.player, ALIEN_PROJECTILES, False, pygame.sprite.collide_circle)
 
             if player_asteroid_collisions or player_alien_collisions:
-                # self.print_score()
 
                 # player looses a life
                 self.lives -= 1
@@ -114,18 +108,6 @@ class Collider:
                 # set the player to be at the center of the screen
                 self.player.pos = vec(WIN_WIDTH/2, WIN_HEIGHT/2)
 
-
     def game_exit(self):
         pygame.quit()
         sys.exit(0)
-
-    def score_board(self, points):
-        text_file = open("Score_tracker.txt", "a")
-        text_file.writelines(str(points) + "\n")
-        text_file.close()
-
-    def print_score(self):
-        score = Score()
-        # score = Score.Score()
-        score.print_score()
-        score.clear_score()

@@ -5,7 +5,6 @@ from src.collision.Collider import Collider
 from src.gameManager import Manager
 from Constants import *
 from src.alien.Alien import Alien
-from Score import Score
 
 # start the pygame engine
 pygame.init()
@@ -18,28 +17,28 @@ clock = pygame.time.Clock()
 # create the player
 player = Player.Player()
 
-# Variables to keep track of sprites on the screen
-
-
 # Game management functions have been abstracted out to their own class for organization
 gameManager = Manager.Manager()
 gameManager.startMusic()
 gameManager.AstroidInit()
 
+# instantiate the collider
 collider = Collider(player, PLAYER_LIVES)
 
+# define the basic font
 font = pygame.font.SysFont("monospace", 15)
 
 rand = random.randint(0, 1000)
 counter = 0
-print(rand)
-totalscore = 0
+
 # main game loop
 while True:
+
+    # create aliens
     counter += 1
     if counter == rand:
         gameManager.Alien()
-        rand = random.randint(0,1000)
+        rand = random.randint(0, 1000)
         counter = 0
 
     # advance the clock
@@ -66,10 +65,10 @@ while True:
 
     # display the score
     score_label = font.render("Score: " + str(collider.score), 1, (255, 255, 255))
-    window.blit(score_label, (WIN_WIDTH*.75, 20))
+    window.blit(score_label, (WIN_WIDTH * .75, 20))
 
     # display the number of lives
     lives_label = font.render("LIVES: " + str(collider.lives), 1, (255, 255, 255))
-    window.blit(lives_label, (WIN_WIDTH*.25, 20))
+    window.blit(lives_label, (WIN_WIDTH * .25, 20))
 
     pygame.display.flip()
