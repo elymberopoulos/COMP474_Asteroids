@@ -28,6 +28,8 @@ gameManager.AstroidInit()
 
 collider = Collider(player, PLAYER_LIVES)
 
+font = pygame.font.SysFont("monospace", 15)
+
 rand = random.randint(0, 1000)
 counter = 0
 print(rand)
@@ -53,10 +55,14 @@ while True:
             if event.key == pygame.K_ESCAPE:
                 # exit the game
                 gameManager.game_exit()
-    font = pygame.font.SysFont("monospace", 15)
 
     # imported module for collision detection and asteroid respawn
     collider.check_collisions()
+
+    # update the sprites
+    GAME_SPRITES.update()
+    # draw the game sprites in the window
+    GAME_SPRITES.draw(window)
 
     # display the score
     score_label = font.render("Score: " + str(collider.score), 1, (255, 255, 255))
@@ -65,10 +71,5 @@ while True:
     # display the number of lives
     lives_label = font.render("LIVES: " + str(collider.lives), 1, (255, 255, 255))
     window.blit(lives_label, (WIN_WIDTH*.25, 20))
-
-    # update the sprites
-    GAME_SPRITES.update()
-    # draw the game sprites in the window
-    GAME_SPRITES.draw(window)
 
     pygame.display.flip()

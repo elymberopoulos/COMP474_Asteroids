@@ -74,7 +74,7 @@ class Collider:
             player_alien_collisions = pygame.sprite.spritecollide(self.player, ALIEN_PROJECTILES, False, pygame.sprite.collide_circle)
 
             if player_asteroid_collisions or player_alien_collisions:
-                self.print_score()
+                # self.print_score()
 
                 # player looses a life
                 self.lives -= 1
