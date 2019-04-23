@@ -27,6 +27,8 @@ IMG_DIR = os.path.join(ASSETS_DIR, "images")
 # relative path to audio dir
 AUDIO_DIR = os.path.join(ASSETS_DIR, "audio")
 
+# asteroid speed constant
+ASTEROID_SPEED = .5
 
 # player constants
 PLAYER_ACC = .5

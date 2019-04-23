@@ -1,5 +1,6 @@
 import pygame, random
 import Constants
+from Constants import *
 import os
 from src.asteroid.SmallAsteroid import SmallAsteroid
 
@@ -21,8 +22,8 @@ class Asteroid3(pygame.sprite.Sprite):
         # Set start location and speeds
         self.rect.x = Constants.WIN_WIDTH + 20
         self.rect.y = random.randrange(0, Constants.WIN_HEIGHT - 100)
-        self.speed_y = random.randrange(-2, 2)
-        self.speed_x = random.randrange(-3, -1)
+        self.speed_y = random.randrange(-2, 2) * ASTEROID_SPEED
+        self.speed_x = random.randrange(-3, -1) * ASTEROID_SPEED
 
         Constants.GAME_SPRITES.add(self)
         Constants.ASTEROIDS.add(self)
@@ -35,8 +36,8 @@ class Asteroid3(pygame.sprite.Sprite):
         if self.rect.top > Constants.WIN_HEIGHT + 15 or self.rect.left < -15 or self.rect.right > Constants.WIN_WIDTH:
             self.rect.x = Constants.WIN_WIDTH - 45
             self.rect.y = random.randrange(0, Constants.WIN_HEIGHT - 100)
-            self.speed_y = random.randrange(-2, 2)
-            self.speed_x = random.randrange(-4, -1)
+            self.speed_y = random.randrange(-2, 2) * ASTEROID_SPEED
+            self.speed_x = random.randrange(-4, -1) * ASTEROID_SPEED
 
     # on destruction, spawn 3 small asteroids
     def __del__(self):

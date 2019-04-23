@@ -1,6 +1,7 @@
 import pygame
 import random
 import Constants
+from Constants import *
 import os
 
 """
@@ -27,8 +28,8 @@ class SmallAsteroid(pygame.sprite.Sprite):
         # Set start location and speeds
         self.rect.x = in_x # random.randrange(Constants.WIN_WIDTH - self.rect.width)
         self.rect.y = in_y    # random.randrange(-100, -50)
-        self.speed_y = random.randrange(-2, 2)
-        self.speed_x = random.randrange(-2, 2)
+        self.speed_y = random.randrange(-2, 2) * ASTEROID_SPEED
+        self.speed_x = random.randrange(-2, 2) * ASTEROID_SPEED
 
         Constants.GAME_SPRITES.add(self)
         Constants.ASTEROIDS.add(self)
@@ -42,6 +43,6 @@ class SmallAsteroid(pygame.sprite.Sprite):
             self.rect.x = random.randrange(
                 Constants.WIN_WIDTH - self.rect.width)
             self.rect.y = random.randrange(-100, -50)
-            self.speed_y = random.randrange(-2, 2)
-            self.speed_x = random.randrange(-2, 2)
+            self.speed_y = random.randrange(-2, 2) * ASTEROID_SPEED
+            self.speed_x = random.randrange(-2, 2) * ASTEROID_SPEED
 
