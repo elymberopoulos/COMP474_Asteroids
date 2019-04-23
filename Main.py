@@ -6,6 +6,7 @@ from src.gameManager import Manager
 from Constants import *
 from src.alien.Alien import Alien
 
+
 # start the pygame engine
 pygame.init()
 # create the pygame window with the specified dimentions
@@ -31,6 +32,28 @@ font = pygame.font.SysFont("monospace", 15)
 rand = random.randint(0, 1000)
 counter = 0
 
+# function to manage pause
+def pause():
+    # boolean to control the loop
+    pause_game = True
+    # while loop occupies game while paused
+    while pause_game:
+        # check for quit event
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                # exit the game
+                gameManager.game_exit()
+            # check for keydown events
+            if event.type == pygame.KEYDOWN:
+                # check for p key to end pause
+                if event.key == pygame.K_p:
+                    # boolean is set to false to break the loop
+                    pause_game = False
+                # check for escape or q key to quit
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
+                    # exit the game
+                    gameManager.game_exit()
+
 # main game loop
 while True:
 
@@ -51,9 +74,12 @@ while True:
         if event.type == pygame.KEYDOWN:
 
             # check for the escape key press
-            if event.key == pygame.K_ESCAPE:
+            if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
                 # exit the game
                 gameManager.game_exit()
+            # check for P key for pause
+            if event.key == pygame.K_p:
+                pause()
 
     # imported module for collision detection and asteroid respawn
     collider.check_collisions()
@@ -72,3 +98,5 @@ while True:
     window.blit(lives_label, (WIN_WIDTH * .25, 20))
 
     pygame.display.flip()
+
+
