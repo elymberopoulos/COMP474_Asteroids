@@ -33,10 +33,13 @@ class Weapon(pygame.sprite.Sprite):
     # Weapons take a copy of the initial position, velocity, and direction to keep up with the ship
     def __init__(self, in_pos, in_vel, in_dir, IN_SPRITE_LIST):
         if type(self).WEAPON_PROJECTILES > type(self).WEAPON_MAX_PROJECTILES:
+            type(self).WEAPON_PROJECTILES += 1
             self.kill()
             return
 
         pygame.sprite.Sprite.__init__(self)
+
+        self.ADDITIONAL_SPRITE_LIST = IN_SPRITE_LIST
 
         # adds itself to the game sprites
         GAME_SPRITES.add(self)
@@ -45,7 +48,7 @@ class Weapon(pygame.sprite.Sprite):
         PROJECTILES.add(self)
 
         # additional sprite list
-        IN_SPRITE_LIST.add(self)
+        self.ADDITIONAL_SPRITE_LIST.add(self)
 
         # sprite image of the projectile
         self.image = pygame.Surface((self.WEAPON_SPRITE_SIZE_X, self.WEAPON_SPRITE_SIZE_Y))
@@ -65,9 +68,8 @@ class Weapon(pygame.sprite.Sprite):
         self.acc = vec(0.0, 0.0)
         # direction
         self.dir = in_dir
-
+        # get the current time the projectile was created
         self.projectile_start_time = pygame.sprite.get_ticks()
-
         # keeps track of how many projectiles of this weapon type are on the screen
         type(self).WEAPON_PROJECTILES += 1
 
@@ -85,7 +87,7 @@ class Weapon(pygame.sprite.Sprite):
         # removal of a projectile based on time
         if pygame.sprite.get_ticks() - self.projectile_start_time > self.WEAPON_LIFE_TIME:
             # decrement the number of projectiles of this weapon class
-            type(self).WEAPON_PROJECTILES -= 1
+            # type(self).WEAPON_PROJECTILES -= 1
             # tell pygame to kill this object
             self.kill()
 
@@ -98,4 +100,12 @@ class Weapon(pygame.sprite.Sprite):
 
         # update the position
         self.rect.center = self.pos
+
+    def kill(self):
+        # decrement the number of projectiles of this weapon class
+        type(self).WEAPON_PROJECTILES -= 1
+        # remove self from all sprite lists
+        self.ADDITIONAL_SPRITE_LIST.remove(self)
+        PROJECTILES.remove(self)
+        GAME_SPRITES.remove(self)
 

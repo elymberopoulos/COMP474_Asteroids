@@ -9,7 +9,7 @@ from src.alien.Alien import Alien
 
 # start the pygame engine
 pygame.init()
-# create the pygame window with the specified dimentions
+# create the pygame window with the specified dimensions
 window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 # set the window title
 pygame.display.set_caption(TITLE)
@@ -18,17 +18,19 @@ clock = pygame.time.Clock()
 # create the player
 player = Player.Player()
 
+
+
+
 # Game management functions have been abstracted out to their own class for organization
-gameManager = Manager.Manager()
-gameManager.start_music()
-gameManager.create_asteroid(7)
+game_manager = Manager.Manager()
+game_manager.start_music()
+game_manager.create_asteroid(ASTEROIDS_AT_START)
 
 # instantiate the collider
-collider = Collider(player, PLAYER_LIVES)
+collider = Collider(player, PLAYER_LIVES, game_manager)
 
 # define the basic font
 font = pygame.font.SysFont("monospace", 15)
-
 
 # function to manage pause
 def pause():
@@ -40,7 +42,7 @@ def pause():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 # exit the game
-                gameManager.game_exit()
+                game_manager.game_exit()
             # check for keydown events
             if event.type == pygame.KEYDOWN:
                 # check for p key to end pause
@@ -50,7 +52,7 @@ def pause():
                 # check for escape or q key to quit
                 if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
                     # exit the game
-                    gameManager.game_exit()
+                    game_manager.game_exit()
 
 
 def random_alien(in_range):
@@ -60,7 +62,7 @@ def random_alien(in_range):
     second_value = random.randint(0, in_range)
     # if the values match, then create an alien
     if first_value == second_value:
-        gameManager.create_alien(1)
+        game_manager.create_alien(1)
 
 
 # main game loop
@@ -80,7 +82,7 @@ while True:
             # check for the escape key press
             if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
                 # exit the game
-                gameManager.game_exit()
+                game_manager.game_exit()
             # check for P key for pause
             if event.key == pygame.K_p:
                 pause()
@@ -100,6 +102,10 @@ while True:
     # display the number of lives
     lives_label = font.render("LIVES: " + str(collider.lives), 1, (255, 255, 255))
     window.blit(lives_label, (WIN_WIDTH * .25, 20))
+
+    # display the number of lives
+    asteroids_label = font.render("ASTEROIDS: " + str(ASTEROIDS.__len__()), 1, (255, 255, 255))
+    window.blit(asteroids_label, (WIN_WIDTH * .5, 20))
 
     pygame.display.flip()
 

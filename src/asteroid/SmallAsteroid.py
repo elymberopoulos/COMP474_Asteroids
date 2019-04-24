@@ -19,21 +19,15 @@ class SmallAsteroid(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
         # Set start location and speeds
-        self.rect.x = in_x # random.randrange(Constants.WIN_WIDTH - self.rect.width)
-        self.rect.y = in_y    # random.randrange(-100, -50)
+        self.rect.x = in_x + random.randrange(-20, 20, 1)
+        self.rect.y = in_y + random.randrange(-20, 20, 1)
 
-        self.speed_x = in_dx + self.random_speed(-1, 1)
+        self.speed_x = in_dx + random.randrange(-2, 2, 1)
+        self.speed_y = in_dy + random.randrange(-2, 2, 1)
 
-        self.speed_y = in_dy + self.random_speed(-1, 1)
-
-        Constants.GAME_SPRITES.add(self)
-        Constants.ASTEROIDS.add(self)
-
-    def random_speed(self, in_min, in_max):
-        value = random.randrange(in_min, in_max)
-        while 0 == value:
-            value = random.randrange(in_min, in_max)
-        return value
+        # add self to sprite lists
+        GAME_SPRITES.add(self)
+        ASTEROIDS.add(self)
 
     def update(self):
         self.rect.y += self.speed_y
@@ -48,4 +42,10 @@ class SmallAsteroid(pygame.sprite.Sprite):
             self.rect.y = 0
         if self.rect.y < 0:
             self.rect.y = WIN_HEIGHT
+
+    def kill(self):
+        # remove self form game sprites
+        GAME_SPRITES.remove(self)
+        # remove self from asteroids
+        ASTEROIDS.remove(self)
 
