@@ -45,6 +45,9 @@ class Player(pygame.sprite.Sprite):
         # angle of the player
         self.angle = 0
 
+        self.invincible = False
+        self.invincible_timer = 0
+
         # add the player to the current game sprites
         GAME_SPRITES.add(self)
 
@@ -122,7 +125,6 @@ class Player(pygame.sprite.Sprite):
 
         # update the position
         self.rect.center = self.pos
-
 
 
 

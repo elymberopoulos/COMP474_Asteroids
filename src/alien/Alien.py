@@ -25,6 +25,7 @@ class Alien(pygame.sprite.Sprite):
 
         self.angle = 0
 
+        # add self to sprite lists
         GAME_SPRITES.add(self)
         ALIEN.add(self)
 
@@ -61,3 +62,8 @@ class Alien(pygame.sprite.Sprite):
         self.rect.center = self.pos
 
         self.fire_weapon(WeaponGunAlien)
+
+    def kill(self):
+        # remove self from sprite lists
+        GAME_SPRITES.remove(self)
+        ALIEN.remove(self)

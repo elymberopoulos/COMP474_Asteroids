@@ -1,4 +1,3 @@
-
 import os
 import pygame
 
@@ -27,11 +26,16 @@ IMG_DIR = os.path.join(ASSETS_DIR, "images")
 # relative path to audio dir
 AUDIO_DIR = os.path.join(ASSETS_DIR, "audio")
 
+# asteroids at start of game
+ASTEROIDS_AT_START = 2
+# new asteroids after they are all destroyed
+ASTEROIDS_INCREMENT = 1
 
 # player constants
-PLAYER_ACC = .5
-PLAYER_FRICTION = -0.05
-PLAYER_ANGLE_VEL = 3
+PLAYER_ACC = .35
+PLAYER_FRICTION = -0.025
+PLAYER_ANGLE_VEL = 4
+PLAYER_LIVES = 3
 
 # standard lists
 GAME_SPRITES = pygame.sprite.Group()
