@@ -13,8 +13,8 @@ class TestAsteroid(unittest.TestCase):
         asteroid = Asteroid.Asteroid()
         height = asteroid.image.get_height()
         width = asteroid.image.get_width()
-        self.assertEqual(40, height)
-        self.assertEqual(40, width)
+        self.assertEqual(46, height)
+        self.assertEqual(53, width)
         GAME_SPRITES.empty()
         # pygame.quit()
 
@@ -27,10 +27,10 @@ class TestAsteroid(unittest.TestCase):
         width = asteroid.image.get_width()
 
         #BVA test for asteroid sizes
-        self.assertNotEqual(39, height)
-        self.assertNotEqual(41, height)
-        self.assertNotEqual(39, width)
-        self.assertNotEqual(41, width)
+        self.assertNotEqual(45, height)
+        self.assertNotEqual(47, height)
+        self.assertNotEqual(52, width)
+        self.assertNotEqual(54, width)
         GAME_SPRITES.empty()
         # pygame.quit()
 
@@ -50,7 +50,7 @@ class TestAsteroid(unittest.TestCase):
         for i in range(100):
             asteroid = Asteroid.Asteroid()
             self.assertFalse(asteroid.rect.x < 0)
-            self.assertFalse(asteroid.rect.x > (WIN_WIDTH - asteroid.rect.width) + 1)
+            self.assertFalse(asteroid.rect.x > WIN_WIDTH)
             GAME_SPRITES.empty()
         pygame.quit()
 
@@ -66,7 +66,7 @@ class TestAsteroid(unittest.TestCase):
         for i in range(5):
             asteroid.update()
         new_y = asteroid.rect.y
-        self.assertTrue(new_y > starting_y)
+        self.assertTrue(new_y != starting_y)
 
         GAME_SPRITES.empty()
         # pygame.quit()

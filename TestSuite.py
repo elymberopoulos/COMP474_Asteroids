@@ -1,6 +1,6 @@
 import unittest
 
-from test.asteroid import test_asteroid, test_asteroid2, test_asteroid3, test_smallAsteroid
+from test.asteroid import test_asteroid, test_smallAsteroid
 from test.player import test_player
 from test.spriteCount import test_spriteCount
 
