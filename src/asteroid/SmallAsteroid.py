@@ -8,7 +8,6 @@ import os
 This asteroid is spawned when a larger asteroid is destroyed
 """
 
-
 class SmallAsteroid(pygame.sprite.Sprite):
 
     # small asteroid takes in the x and y position as a starting location

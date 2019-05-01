@@ -28,6 +28,8 @@ collider = Collider(player, PLAYER_LIVES, game_manager)
 
 # define the basic font
 font = pygame.font.SysFont("monospace", 15)
+# define initial screen font
+initial_font = pygame.font.SysFont("monospace", 50)
 
 # function to manage pause
 def pause():
@@ -61,13 +63,51 @@ def random_alien(in_range):
     if first_value == second_value:
         game_manager.create_alien(1)
 
+def initial_screen():
+    initial_counter = 1
+    while 0 != initial_counter:
+        # advance the clock
+        clock.tick(FPS)
+        # start screen
+        window.fill(BLACK)
+        # display the number of lives
+        start_label = initial_font.render("ASTEROIDS", 1, (255, 255, 255))
+        window.blit(start_label, (WIN_WIDTH * .5, WIN_HEIGHT * .25))
+
+        start_label = font.render("PRESS ENTER TO START GAME", 1, (255, 255, 255))
+        window.blit(start_label, (WIN_WIDTH * .5, WIN_HEIGHT * .5))
+
+        start_label = font.render("PRESS ESCAPE TO EXIT", 1, (255, 255, 255))
+        window.blit(start_label, (WIN_WIDTH * .5, WIN_HEIGHT * .55))
+
+        start_label = font.render("PRESS P TO PAUSE", 1, (255, 255, 255))
+        window.blit(start_label, (WIN_WIDTH * .5, WIN_HEIGHT * .6))
+
+        start_label = font.render("PRESS SPACE TO FIRE", 1, (255, 255, 255))
+        window.blit(start_label, (WIN_WIDTH * .5, WIN_HEIGHT * .65))
+
+        start_label = font.render("PRESS ARROW KEYS FOR MOVEMENT", 1, (255, 255, 255))
+        window.blit(start_label, (WIN_WIDTH * .5, WIN_HEIGHT * .7))
+        pygame.display.flip()
+
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                # check for return key for exiting initial screen
+                if event.key == pygame.K_RETURN:
+                    initial_counter = 0
+                # check for the escape key press to quit the game
+                if event.key == pygame.K_ESCAPE or event.key == pygame.K_q:
+                    # exit the game
+                    game_manager.game_exit()
+
+#start the inital screen
+initial_screen()
 
 player.invincible = True
 player.safe_timer = PLAYER_SAFETY_TIME_INITIAL
 
 # main game loop
 while True:
-
     # create random aliens
     random_alien(1000)
 
@@ -96,7 +136,7 @@ while True:
     GAME_SPRITES.draw(window)
 
     # display the score
-    score_label = font.render("Score: " + str(collider.score), 1, (255, 255, 255))
+    score_label = font.render("SCORE: " + str(collider.score), 1, (255, 255, 255))
     window.blit(score_label, (WIN_WIDTH * .75, 20))
 
     # display the number of lives
@@ -104,8 +144,8 @@ while True:
     window.blit(lives_label, (WIN_WIDTH * .25, 20))
 
     # display the number of lives
-    asteroids_label = font.render("ASTEROIDS: " + str(ASTEROIDS.__len__()), 1, (255, 255, 255))
-    window.blit(asteroids_label, (WIN_WIDTH * .5, 20))
+    # asteroids_label = font.render("ASTEROIDS: " + str(ASTEROIDS.__len__()), 1, (255, 255, 255))
+    # window.blit(asteroids_label, (WIN_WIDTH * .5, 20))
 
     pygame.display.flip()
 
