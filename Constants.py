@@ -27,15 +27,25 @@ IMG_DIR = os.path.join(ASSETS_DIR, "images")
 AUDIO_DIR = os.path.join(ASSETS_DIR, "audio")
 
 # asteroids at start of game
-ASTEROIDS_AT_START = 2
+ASTEROIDS_AT_START = 5
 # new asteroids after they are all destroyed
 ASTEROIDS_INCREMENT = 1
 
 # player constants
+# player acceleration
 PLAYER_ACC = .35
+# player friction
 PLAYER_FRICTION = -0.025
+# player angular velocity
 PLAYER_ANGLE_VEL = 4
+# player lives
 PLAYER_LIVES = 3
+# player invinciblity time after death
+PLAYER_INVINCIBILITY_TIME = 100
+# player initial safe time
+PLAYER_SAFETY_TIME_INITIAL = 200
+# player initial time
+PLAYER_SAFETY_TIME = 100
 
 # standard lists
 GAME_SPRITES = pygame.sprite.Group()
@@ -44,3 +54,5 @@ ASTEROIDS = pygame.sprite.Group()
 PLAYER_PROJECTILES = pygame.sprite.Group()
 ALIEN_PROJECTILES = pygame.sprite.Group()
 ALIEN = pygame.sprite.Group()
+
+

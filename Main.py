@@ -18,9 +18,6 @@ clock = pygame.time.Clock()
 # create the player
 player = Player.Player()
 
-
-
-
 # Game management functions have been abstracted out to their own class for organization
 game_manager = Manager.Manager()
 game_manager.start_music()
@@ -64,6 +61,9 @@ def random_alien(in_range):
     if first_value == second_value:
         game_manager.create_alien(1)
 
+
+player.invincible = True
+player.safe_timer = PLAYER_SAFETY_TIME_INITIAL
 
 # main game loop
 while True:

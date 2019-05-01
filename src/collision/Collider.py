@@ -80,7 +80,7 @@ class Collider:
                 # the player is now invincible
                 self.player.invincible = True
                 # set the amount of time the player is invincible for
-                self.player.invincible_timer = 100
+                self.player.invincible_timer = PLAYER_INVINCIBILITY_TIME
                 # remove the player from the game sprites
                 GAME_SPRITES.remove(self.player)
 
@@ -88,21 +88,33 @@ class Collider:
                 self.score += 50
                 self.EXPLOSION_EFFECT.play()
 
-        # if the player is invincible
-        elif self.player.invincible:
+        # if the player is invincible and zero is less than or equal to the invincible_timer
+        elif self.player.invincible and 0 < self.player.invincible_timer:
             # decrement the invincibility timer
             self.player.invincible_timer -= 1
 
             # if zero is greater than or equal to the invincibility timer
             if 0 >= self.player.invincible_timer:
                 # set the player to be no longer invincible
-                self.player.invincible = False
+                # self.player.invincible = False
+                # start the safe timer for safey after respawn
+                self.player.safe_timer = PLAYER_SAFETY_TIME
                 # add the player back to the game sprites
                 GAME_SPRITES.add(self.player)
                 # set the player's speed to zero
                 self.player.vel = vec(0, 0)
                 # set the player to be at the center of the screen
                 self.player.pos = vec(WIN_WIDTH/2, WIN_HEIGHT/2)
+
+        # if the player is invincible and zero is less than or equal to the safe_timer
+        elif self.player.invincible and 0 < self.player.safe_timer:
+            # decrement the safe timer
+            self.player.safe_timer -= 1
+
+            # check if the timer has elapsed
+            if 0 >= self.player.safe_timer:
+                # set the player to be no longer invincible
+                self.player.invincible = False
 
     def game_exit(self):
         pygame.quit()

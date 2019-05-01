@@ -48,6 +48,7 @@ class Player(pygame.sprite.Sprite):
 
         self.invincible = False
         self.invincible_timer = 0
+        self.safe_timer = 0
 
         # add the player to the current game sprites
         GAME_SPRITES.add(self)
