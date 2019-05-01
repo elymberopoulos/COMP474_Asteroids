@@ -10,11 +10,13 @@ class TestSmallAsteroid(unittest.TestCase):
         # Test that the asteroid sprites are the correct size
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2)
+        mainAsteroid = Asteroid.Asteroid()
+
+        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2, mainAsteroid.speed_x, mainAsteroid.speed_y)
         height = asteroid.image.get_height()
         width = asteroid.image.get_width()
-        self.assertEqual(10, height)
-        self.assertEqual(10, width)
+        self.assertEqual(15, height)
+        self.assertEqual(15, width)
         GAME_SPRITES.empty()
         pygame.quit()
 
@@ -22,15 +24,17 @@ class TestSmallAsteroid(unittest.TestCase):
         # Test the BVA values for asteroid sizes and assert they are not equal
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2)
+        mainAsteroid = Asteroid.Asteroid()
+
+        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2, mainAsteroid.speed_x, mainAsteroid.speed_y)
         height = asteroid.image.get_height()
         width = asteroid.image.get_width()
 
         #BVA test for asteroid sizes
-        self.assertNotEqual(9, height)
-        self.assertNotEqual(11, height)
-        self.assertNotEqual(9, width)
-        self.assertNotEqual(11, width)
+        self.assertNotEqual(14, height)
+        self.assertNotEqual(16, height)
+        self.assertNotEqual(14, width)
+        self.assertNotEqual(16, width)
         GAME_SPRITES.empty()
         ASTEROIDS.empty()
         pygame.quit()
@@ -41,7 +45,7 @@ class TestSmallAsteroid(unittest.TestCase):
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
 
         asteroid = Asteroid.Asteroid()
-        asteroid.__del__()
+        asteroid.kill()
         self.assertEqual(3, len(GAME_SPRITES.sprites()))
 
         GAME_SPRITES.empty()
@@ -52,7 +56,9 @@ class TestSmallAsteroid(unittest.TestCase):
         # this test is for making sure that the x-axis movement of the asteroid is within its accepted bounds
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2)
+        mainAsteroid = Asteroid.Asteroid()
+
+        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2, mainAsteroid.speed_x, mainAsteroid.speed_y)
         starting_y = asteroid.speed_y
 
         # Update the frame for the asteroid once
@@ -68,7 +74,9 @@ class TestSmallAsteroid(unittest.TestCase):
         # this test is for making sure that the x-axis movement of the asteroid is within its accepted bounds
         pygame.init()
         window = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
-        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2)
+        mainAsteroid = Asteroid.Asteroid()
+
+        asteroid = SmallAsteroid.SmallAsteroid(WIN_WIDTH / 2, WIN_HEIGHT / 2, mainAsteroid.speed_x, mainAsteroid.speed_y)
         starting_x = asteroid.speed_x
 
         # Update the frame for the asteroid once
