@@ -2,17 +2,17 @@ import Constants
 from WeaponList import *
 import copy
 import os
+import random
 vec = pygame.math.Vector2
 
 
 class Alien(pygame.sprite.Sprite):
 
     def __init__(self):
-
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load(os.path.join(Constants.IMG_DIR, "AlienShip.PNG")).convert()
-
+        # initialize sprite
+        self.image = pygame.image.load(os.path.join(Constants.IMG_DIR, "AlienShip.png")).convert_alpha()
         self.rect = self.image.get_rect()
 
         # position

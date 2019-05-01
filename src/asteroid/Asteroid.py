@@ -15,7 +15,9 @@ class Asteroid(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
 
         # associate with the sprite randomly by directly using the random number between 1 and 3
-        self.image = pygame.image.load(os.path.join(IMG_DIR, "Asteroid_" + str(random.randrange(1, 4, 1)) + ".PNG")).convert_alpha()
+        self.image = pygame.image.load(os.path.join(IMG_DIR, "Asteroid_" + str(random.randrange(1, 5, 1)) + ".png")).convert_alpha()
+        # scale the sprite to the appropriate size
+        self.image = pygame.transform.smoothscale(self.image, (50, 50))
 
         # get the rectangular size of the sprite
         self.rect = self.image.get_rect()

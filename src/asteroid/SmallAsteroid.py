@@ -15,9 +15,12 @@ class SmallAsteroid(pygame.sprite.Sprite):
     def __init__(self, in_x, in_y, in_dx, in_dy):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load(os.path.join(Constants.IMG_DIR, "Small_Asteroid.PNG")).convert_alpha()
+        # initialize the sprite
+        self.image = pygame.image.load(os.path.join(IMG_DIR, "Asteroid_" + str(random.randrange(1, 5, 1)) + ".png")).convert_alpha()
+        # scale the sprite to the appropriate size
+        self.image = pygame.transform.smoothscale(self.image, (20, 20))
+        # get the rectangular size of the sprite
         self.rect = self.image.get_rect()
-
         # Set start location and speeds
         self.rect.x = in_x + random.randrange(-20, 20, 1)
         self.rect.y = in_y + random.randrange(-20, 20, 1)
