@@ -1,8 +1,6 @@
 import unittest
 
-from src.asteroid import Asteroid, SmallAsteroid
 from src.alien import Alien
-from Constants import *
 from WeaponList import *
 import pygame
 vec = pygame.math.Vector2

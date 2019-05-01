@@ -1,16 +1,13 @@
 import unittest
-import pygame
-import time
-from src.player import Player
-from src.asteroid import Asteroid
-from src.collision import Collider
+
 from src.gameManager import Manager
-from Constants import *
 from WeaponList import *
 
 
 
 class TestSpriteCounter(unittest.TestCase):
+
+    # The below test was an attempt to implement collision detection within the game
 
     # def test_AsteroidDestruction(self):
     #     # Test that an ansteroid is destroyed after a bullet is fired and the group length is decremented

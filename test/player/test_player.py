@@ -1,6 +1,6 @@
 import unittest
+
 from src.player import Player
-from Constants import *
 from WeaponList import *
 import pygame
 import time
