@@ -2,6 +2,7 @@ import unittest
 
 from test.asteroid import test_asteroid, test_smallAsteroid
 from test.player import test_player
+from test.alien import test_alien
 from test.spriteCount import test_spriteCount
 
 """
@@ -17,6 +18,7 @@ suite = unittest.TestSuite()
 suite.addTests(loader.loadTestsFromModule(test_asteroid))
 suite.addTests(loader.loadTestsFromModule(test_smallAsteroid))
 suite.addTests(loader.loadTestsFromModule(test_player))
+suite.addTests(loader.loadTestsFromModule(test_alien))
 suite.addTests(loader.loadTestsFromModule(test_spriteCount))
 
 runner = unittest.TextTestRunner(verbosity=3)
