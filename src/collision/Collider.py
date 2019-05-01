@@ -2,7 +2,7 @@ import sys
 from Weapon import *
 from Constants import *
 import os
-
+from GameOver import HighScore
 
 class Collider:
 
@@ -117,5 +117,7 @@ class Collider:
                 self.player.invincible = False
 
     def game_exit(self):
-        pygame.quit()
-        sys.exit(0)
+        #pygame.quit()
+        #sys.exit(0)
+        HighScore(self.score)
+
