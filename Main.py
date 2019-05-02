@@ -109,7 +109,7 @@ player.safe_timer = PLAYER_SAFETY_TIME_INITIAL
 # main game loop
 while True:
     # create random aliens
-    random_alien(1000)
+    random_alien(ALIEN_SPAWN_RATE)
 
     # advance the clock
     clock.tick(FPS)

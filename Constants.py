@@ -47,6 +47,10 @@ PLAYER_SAFETY_TIME_INITIAL = 200
 # player initial time
 PLAYER_SAFETY_TIME = 100
 
+# alien
+# the spawn rate of aliens
+ALIEN_SPAWN_RATE = 1000
+
 # standard lists
 GAME_SPRITES = pygame.sprite.Group()
 PROJECTILES = pygame.sprite.Group()

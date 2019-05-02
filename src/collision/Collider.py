@@ -4,6 +4,7 @@ from Constants import *
 import os
 from GameOver import HighScore
 
+
 class Collider:
 
     def __init__(self, in_player, in_player_lives, in_game_manager):
@@ -51,6 +52,20 @@ class Collider:
             self.EXPLOSION_EFFECT.play()
 
         # --------------------------------------------------------------------------------------------------------------
+        # collision between alien and asteroids
+        alien_asteroid_collision = pygame.sprite.groupcollide(ALIEN, ASTEROIDS, True, True)
+
+        for collision in alien_asteroid_collision:
+            # play explosion sound effect
+            self.EXPLOSION_EFFECT.play()
+            # if 0 is greater than or equal to the number of asteroids then we need to spawn more asteroids!
+            if 0 >= ASTEROIDS.__len__():
+                # the number of asteroids to spawn increases
+                self.number_of_asteroids_to_spawn += ASTEROIDS_INCREMENT
+                # use the game manager to spawn the number of asteroids we want
+                self.game_manager.create_asteroid(self.number_of_asteroids_to_spawn)
+
+        # --------------------------------------------------------------------------------------------------------------
         # collision between asteroids and projectiles
         asteroid_player_bullet_collision = pygame.sprite.groupcollide(ASTEROIDS, PLAYER_PROJECTILES, True, True)
 
@@ -68,9 +83,11 @@ class Collider:
 
         if not self.player.invincible:
             # Check for player collisions with asteroids
-            player_asteroid_collisions = pygame.sprite.spritecollide(self.player, ASTEROIDS, False, pygame.sprite.collide_circle)
+            player_asteroid_collisions = pygame.sprite.spritecollide(self.player, ASTEROIDS, False,
+                                                                     pygame.sprite.collide_circle)
             # Check for player collisions with aliens
-            player_alien_collisions = pygame.sprite.spritecollide(self.player, ALIEN_PROJECTILES, False, pygame.sprite.collide_circle)
+            player_alien_collisions = pygame.sprite.spritecollide(self.player, ALIEN_PROJECTILES, False,
+                                                                  pygame.sprite.collide_circle)
 
             if player_asteroid_collisions or player_alien_collisions:
 
@@ -112,7 +129,7 @@ class Collider:
                 # set the player's speed to zero
                 self.player.vel = vec(0, 0)
                 # set the player to be at the center of the screen
-                self.player.pos = vec(WIN_WIDTH/2, WIN_HEIGHT/2)
+                self.player.pos = vec(WIN_WIDTH / 2, WIN_HEIGHT / 2)
 
         # if the player is invincible and zero is less than or equal to the safe_timer
         elif self.player.invincible and 0 <= self.player.safe_timer:
@@ -125,8 +142,6 @@ class Collider:
                 self.player.invincible = False
 
     def game_exit(self):
-        #pygame.quit()
-        #sys.exit(0)
+        # pygame.quit()
+        # sys.exit(0)
         HighScore(self.score)
-
-
