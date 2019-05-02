@@ -27,7 +27,7 @@ IMG_DIR = os.path.join(ASSETS_DIR, "images")
 AUDIO_DIR = os.path.join(ASSETS_DIR, "audio")
 
 # asteroids at start of game
-ASTEROIDS_AT_START = 5
+ASTEROIDS_AT_START = 1
 # new asteroids after they are all destroyed
 ASTEROIDS_INCREMENT = 1
 

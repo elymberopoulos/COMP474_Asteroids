@@ -30,6 +30,16 @@ class Collider:
         # collision between alien projectiles and asteroids
         asteroid_alien_bullet_collision = pygame.sprite.groupcollide(ASTEROIDS, ALIEN_PROJECTILES, True, True)
 
+        for asteroid_alien in asteroid_alien_bullet_collision:
+            # play explosion sound effect
+            self.EXPLOSION_EFFECT.play()
+            # if 0 is greater than or equal to the number of asteroids then we need to spawn more asteroids!
+            if 0 >= ASTEROIDS.__len__():
+                # the number of asteroids to spawn increases
+                self.number_of_asteroids_to_spawn += ASTEROIDS_INCREMENT
+                # use the game manager to spawn the number of asteroids we want
+                self.game_manager.create_asteroid(self.number_of_asteroids_to_spawn)
+
         # --------------------------------------------------------------------------------------------------------------
         # collision between alien and player projectiles
         alien_player_projectile_collision = pygame.sprite.groupcollide(ALIEN, PLAYER_PROJECTILES, True, True)
@@ -55,8 +65,6 @@ class Collider:
                 self.number_of_asteroids_to_spawn += ASTEROIDS_INCREMENT
                 # use the game manager to spawn the number of asteroids we want
                 self.game_manager.create_asteroid(self.number_of_asteroids_to_spawn)
-
-                # TODO kill all aliens on screen
 
         if not self.player.invincible:
             # Check for player collisions with asteroids
@@ -89,7 +97,7 @@ class Collider:
                 self.EXPLOSION_EFFECT.play()
 
         # if the player is invincible and zero is less than or equal to the invincible_timer
-        elif self.player.invincible and 0 < self.player.invincible_timer:
+        elif self.player.invincible and 0 <= self.player.invincible_timer:
             # decrement the invincibility timer
             self.player.invincible_timer -= 1
 
@@ -107,7 +115,7 @@ class Collider:
                 self.player.pos = vec(WIN_WIDTH/2, WIN_HEIGHT/2)
 
         # if the player is invincible and zero is less than or equal to the safe_timer
-        elif self.player.invincible and 0 < self.player.safe_timer:
+        elif self.player.invincible and 0 <= self.player.safe_timer:
             # decrement the safe timer
             self.player.safe_timer -= 1
 
@@ -120,4 +128,5 @@ class Collider:
         #pygame.quit()
         #sys.exit(0)
         HighScore(self.score)
+
 
